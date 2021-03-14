@@ -9,6 +9,7 @@ body {
     font-family:Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: aliceblue;
   }
   #root{
       margin: 0 auto;

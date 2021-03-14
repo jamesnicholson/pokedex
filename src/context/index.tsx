@@ -1,7 +1,7 @@
 
 import React, { createContext, useReducer } from 'react'
 import APIService from '../api';
-import IState,{IAction} from '../types/interfaces';
+import IState from '../types/interfaces';
 import reducer from '../reducers'
 
 export const initialState: IState =  {
