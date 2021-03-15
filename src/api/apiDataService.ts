@@ -1,11 +1,18 @@
 import Pokemon from '../types/models/pokemon'
 import APIEndpoints from '../api'
 export default class APIDataService {
-    static readonly MAX_POKEMON_ID = 152;
+    static readonly MAX_POKEMON = 152;
     private pokemon: Pokemon[] = [];
 
-    async load(): Promise<Pokemon[]> {
-        this.pokemon = await this.loadFromAPI();
+    async loadPokemon(): Promise<Pokemon[]> {
+        if(this.isCached()){
+            console.log("Use Cache")
+            this.loadFromCache();
+
+        }else{
+            this.pokemon = await this.getPokemonFromApi();
+            this.saveToCache();
+        }
         return this.getPokemon;
     }
     
@@ -13,8 +20,29 @@ export default class APIDataService {
         return this.pokemon;
     }
 
-    private async loadFromAPI(): Promise<Pokemon[]> {
+    private async getPokemonFromApi(): Promise<Pokemon[]> {
         const api = new APIEndpoints();
         return api.getPokemon().then((pokemon: Pokemon[]) => pokemon);
     }
+    private saveToCache(){
+       this.pokemon.map((item: Pokemon) => this.updateCache(item))
+    }
+    private isCached(){
+        return localStorage.length === 0 ? false : true;
+    }
+    updateCache(pokemon: Pokemon) {
+        if(pokemon.id !== undefined) {
+            localStorage.setItem(pokemon.id.toString(), pokemon.toJson());
+        }
+    }
+    async loadFromCache() {
+        let output = [];
+        for (let i = 1; i < APIDataService.MAX_POKEMON; i++) {
+          const json = localStorage.getItem(i.toString());
+          if(json !== null) {
+            output.push(Pokemon.fromJson(json))
+          }
+        }
+        this.pokemon = output;
+      }
 }

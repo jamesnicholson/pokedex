@@ -24,4 +24,12 @@ export default class Pokemon {
           this.id = Number(match[0]);
         }
     }
+    toJson(): string {
+        return JSON.stringify(this);
+    }
+    static fromJson(json: string): Pokemon {
+        const parsed = JSON.parse(json);
+        return new Pokemon(parsed.name, parsed.url, parsed.id);
+      }
+    
 }
