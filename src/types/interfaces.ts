@@ -1,11 +1,8 @@
-import Pokemon from './models/pokemon'
 import {ActionType} from './enums'
-export interface IAction {
-  type: ActionType;
-  payload: any;
-}
+import Pokemon from './models/pokemon';
+
 export default interface IState {
-  favoritePokemon: Array<Pokemon> | null;
+  pokemon: Array<Pokemon> | null;
   loading: boolean
 }
 
@@ -20,3 +17,21 @@ export interface APIResponseItem {
   name: string;
   url: string;
 }
+
+export interface IAction {
+  type: ActionType;
+  payload: any;
+}
+export interface ISetLoading {
+  type: ActionType.SET_LOADING;
+  payload: boolean
+}
+export interface ISavePokemon{
+  type: ActionType.SAVE_POKEMON;
+  payload: Array<Pokemon>;
+}
+export interface IGetPokemon {
+  type: ActionType.GET_POKEMON;
+  payload: Array<Pokemon>;
+}
+

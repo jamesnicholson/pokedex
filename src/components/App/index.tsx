@@ -1,8 +1,9 @@
 import React, {useEffect, useContext} from 'react';
 import styled from 'styled-components';
 import APIService from '../../api/apiDataService'
-import {AppContext} from '../../context'
+import AppContext from '../../store/context'
 import {ActionType} from '../../types/enums'
+
 export const Title = styled.h1`
   padding: 10px;
   color: ${props => props.theme.colors.main};
@@ -11,12 +12,18 @@ export const Title = styled.h1`
 
 const App = (): JSX.Element => { 
   const {dispatch} = useContext(AppContext);
+
   useEffect(() => {
     const api = new APIService();
     api.loadPokemon().then(data => {
+      console.log(dispatch)
+      dispatch({
+        type: ActionType.SAVE_POKEMON,
+        payload: data
+      });
       dispatch({
         type: ActionType.SET_LOADING,
-        loading: true
+        payload: false
       });
     });
   },[dispatch]);

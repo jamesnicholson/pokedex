@@ -6,7 +6,6 @@ export default class APIDataService {
 
     async loadPokemon(): Promise<Pokemon[]> {
         if(this.isCached()){
-            console.log("Use Cache")
             this.loadFromCache();
 
         }else{
