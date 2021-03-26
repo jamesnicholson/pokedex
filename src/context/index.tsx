@@ -4,10 +4,11 @@ import IState from '../types/interfaces';
 import reducer from '../reducers'
 
 export const initialState: IState =  {
-    pokemon:[],
+    favoritePokemon: [], 
+    loading: true
 }
 
-const AppContext = createContext<{
+export const AppContext = createContext<{
     state: IState;
     dispatch: React.Dispatch<any>;
   }>({

@@ -1,11 +1,12 @@
 import Pokemon from './models/pokemon'
-
+import {ActionType} from './enums'
 export interface IAction {
-  type: string
-  payload: any
+  type: ActionType;
+  payload: any;
 }
 export default interface IState {
-  pokemon: Array<Pokemon> | null;
+  favoritePokemon: Array<Pokemon> | null;
+  loading: boolean
 }
 
 export interface APIResponse {
