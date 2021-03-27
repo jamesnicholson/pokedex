@@ -2,8 +2,8 @@ import {ActionType} from './enums'
 import Pokemon from './models/pokemon';
 
 export default interface IState {
-  pokemon: Array<Pokemon> | null;
-  loading: boolean
+  pokemon: any;
+  loading: boolean 
 }
 
 export interface APIResponse {

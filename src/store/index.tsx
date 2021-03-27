@@ -3,7 +3,6 @@ import reducer from './reducers'
 import AppContext, {initialState} from './context'
 
 const AppProvider: React.FC = ({ children }) => {
-    console.log(reducer)
     const [state, dispatch] = useReducer(reducer, initialState);
     return (
       <AppContext.Provider value={{state, dispatch}}>
