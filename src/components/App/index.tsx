@@ -2,8 +2,9 @@ import {useEffect, useContext} from 'react';
 import styled from 'styled-components';
 import APIService from '../../api/apiDataService'
 import AppContext from '../../store/context'
-import {ActionType} from '../../types/enums'
+import Pokemon from '../../types/models/pokemon'
 import {savePokemon, setLoading} from '../../store/actions'
+import Card from '../Card'
 export const Title = styled.h1`
   padding: 10px;
   color: ${props => props.theme.colors.main};
@@ -19,12 +20,10 @@ const App = (): JSX.Element => {
       dispatch(setLoading(false))
     });
   },[dispatch]);
-
-  useEffect(()=>{
-    console.log(state)
-  },[state])
-  
-  return <Title>Hello Pokedex</Title>
+  return <>
+      <Title>Hello Pokedex</Title>
+      {state.pokemon.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}
+      </>
 }
 
 export default App;

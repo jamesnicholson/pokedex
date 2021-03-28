@@ -10,13 +10,25 @@ export interface APIResponse {
   count: number;
   next: string;
   previous: string;
-  results: Array<APIResponseItem>;
+  results: Array<APIResponseGeneric>;
 }
 
-export interface APIResponseItem {
+export interface APIResponseGeneric {
   name: string;
   url: string;
 }
+
+export interface APIResponsePokemonDetails {
+  name: string;
+  types: Array<APIResponsePokemonTypes>;
+}
+
+export interface APIResponsePokemonTypes{
+  slot: number;
+  type: Array<APIResponseGeneric>;
+}
+
+
 
 export interface IAction {
   type: ActionType;

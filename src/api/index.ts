@@ -1,12 +1,17 @@
 import Pokemon from '../types/models/pokemon'
-import {APIResponseItem, APIResponse} from '../types/interfaces'
+import {APIResponse, APIResponseGeneric, APIResponsePokemonDetails,APIResponsePokemonTypes } from '../types/interfaces'
+
 export default class APIEndpoints {
     static readonly URI = 'https://pokeapi.co/api/v2/pokemon';
-    async getPokemon(limit = 151): Promise<Pokemon[]> {
-        const url = `${APIEndpoints.URI}?limit=${limit}`;
-        const response = await fetch(url);
-        const parsed: APIResponse = await response.json();
-        const pokemon = parsed.results.map((i: APIResponseItem) => new Pokemon(i.name, i.url));
-        return pokemon;
-      }
+    async getPokemon(limit = 5): Promise<Pokemon[]> {
+        const url_pokemon_list = `${APIEndpoints.URI}?limit=${limit}`;
+        const parsedPokemonList: APIResponse = await fetch(url_pokemon_list).then(response => response.json());
+        const pokemen = parsedPokemonList.results.map( async (i: APIResponseGeneric) => {
+          const url = `${APIEndpoints.URI}/${i.name}`;
+          const parsed_types: APIResponsePokemonDetails = await fetch(url).then(response => response.json());
+          const types = parsed_types.types.map((data: APIResponsePokemonTypes) => data.type)
+          return new Pokemon(i.name, i.url, types);
+        })
+        return Promise.all(pokemen);
+  }
 }

@@ -5,13 +5,14 @@ export default class APIDataService {
     private pokemon: Pokemon[] = [];
 
     async loadPokemon(): Promise<Pokemon[]> {
-        if(this.isCached()){
+       if(this.isCached()){
             this.loadFromCache();
 
         }else{
             this.pokemon = await this.getPokemonFromApi();
             this.saveToCache();
         }
+        this.pokemon = await this.getPokemonFromApi();
         return this.getPokemon;
     }
     
