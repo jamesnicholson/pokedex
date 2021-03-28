@@ -1,11 +1,11 @@
 export default class Pokemon {
     id?: number;
     name: string;
-    favorite?: boolean = false
+    favorite: boolean = false
     url: string;
     types: any;
 
-    constructor(name: string, url: string, types:any, favorite?:boolean, id?: number){
+    constructor(name: string, url: string, types:any, favorite:boolean, id?: number){
         this.name = name;
         this.url = url;
         this.types = types;

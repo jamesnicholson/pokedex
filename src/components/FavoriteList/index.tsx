@@ -1,6 +1,7 @@
 import { FC, useContext } from 'react'
 import styled from 'styled-components'
 import AppContext from '../../store/context'
+import Pokemon from '../../types/models/pokemon';
 
 interface IFavoriteListProps {
 } 
@@ -20,8 +21,11 @@ export const FavoriteListWrapper = styled.div`
 const FavoriteList: FC<IFavoriteListProps> = () => {
     const {state} = useContext(AppContext);
     const {favorites} = state;
+    if(favorites.length === 0){
+        return <div>Your favorite Pokémon will appear here.</div> 
+    }
     return  <FavoriteListWrapper>
-                {favorites.map((item: string, index: number) => <Name key={index}>{item}</Name>) }
+                {favorites.map((pokemon: Pokemon, index: number) => <Name key={index}>{pokemon.displayName}</Name>)}
             </FavoriteListWrapper>
 
 }

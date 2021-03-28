@@ -39,8 +39,8 @@ export interface ISetLoading {
   type: ActionType.SET_LOADING;
   payload: boolean
 }
-export interface ISavePokemon{
-  type: ActionType.SAVE_POKEMON;
+export interface ISetPokemon{
+  type: ActionType.SET_POKEMON;
   payload: Array<Pokemon>;
 }
 export interface IGetPokemon {
@@ -49,5 +49,9 @@ export interface IGetPokemon {
 }
 export interface IToggleFavorite {
   type: ActionType.TOGGLE_FAVORITE;
-  payload: string;
+  payload: Pokemon;
+}
+export interface ISetFavorites{
+  type: ActionType.SET_FAVORITES;
+  payload: Array<Pokemon>;
 }

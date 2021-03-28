@@ -46,7 +46,7 @@ export const TabButton = styled.div`
 
 const Tabs: FC<ITabsProps> = () => {
 
-  const [toggleList, setToggleList] = useState("all");
+  const [toggleList, setToggleList] = useState("allPokemon");
   const {state} = useContext(AppContext);
   const handler = (tab: string) => {
       setToggleList(tab);

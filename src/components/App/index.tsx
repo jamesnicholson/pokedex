@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import APIService from '../../api/apiDataService'
 import AppContext from '../../store/context'
 import Pokemon from '../../types/models/pokemon'
-import {savePokemon, setLoading} from '../../store/actions'
+import {setPokemon, setLoading, setFavorties} from '../../store/actions'
 import Tabs from '../Tabs'
 import Card from '../Card'
 
@@ -47,14 +47,15 @@ const App = (): JSX.Element => {
 
   const {state, dispatch} = useContext(AppContext);
   
- /* useEffect(() => {
+  /*useEffect(() => {
     console.log(state)
   },[state])*/
 
   useEffect(() => {
     const api = new APIService();
     api.loadPokemon().then(data => {
-      dispatch(savePokemon(data))
+      dispatch(setPokemon(data))
+      dispatch(setFavorties(data.filter((pokemon: Pokemon) => pokemon.isFavorite)))
       dispatch(setLoading(false))
     });
   },[dispatch]);

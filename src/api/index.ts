@@ -10,7 +10,7 @@ export default class APIEndpoints {
           const url = `${APIEndpoints.URI}/${i.name}`;
           const parsed_types: APIResponsePokemonDetails = await fetch(url).then(response => response.json());
           const types = parsed_types.types.map((data: APIResponsePokemonTypes) => data.type)
-          return new Pokemon(i.name, i.url, types);
+          return new Pokemon(i.name, i.url, types, false);
         })
         return Promise.all(pokemen);
   }

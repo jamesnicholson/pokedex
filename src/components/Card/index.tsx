@@ -49,7 +49,7 @@ const Card: FC<ICardProps> = ({pokemon}) => {
     const {spriteURL, displayName, displayCode, isFavorite} = pokemon
     const {dispatch} = useContext(AppContext);
     const handler = () => {
-        dispatch(toggleFavorite(displayName));
+        dispatch(toggleFavorite(pokemon));
         const api = new APIService();
         api.updateFavoriteCache(pokemon);
     }
