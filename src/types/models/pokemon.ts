@@ -19,6 +19,9 @@ export default class Pokemon {
     get spriteURL(): string {
         return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.id}.png`;
     }
+    get speciesType(): string[] {
+        return this.types.map((item:any) => item.name);
+    }
     private createID() {
         if(this.id) {
           return;
@@ -35,6 +38,7 @@ export default class Pokemon {
     static fromJson(json: string): Pokemon {
         const parsed = JSON.parse(json);
         return new Pokemon(parsed.name, parsed.url, parsed.id);
-      }
+      
+    }
     
 }

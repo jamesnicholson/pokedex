@@ -7,6 +7,7 @@ interface ICardProps {
 }
 
 const Card: FC<ICardProps> = ({pokemon}) => {
+    console.log(pokemon)
     return <img src={pokemon.spriteURL} alt={pokemon.displayName} />
 }
 export default Card
