@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: "jam3snicholson/pokedex"
+    ports:
+      - "3300:3000"
