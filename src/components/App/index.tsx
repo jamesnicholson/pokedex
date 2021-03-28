@@ -19,6 +19,11 @@ export const AppWrapper = styled.div`
 
 const App = (): JSX.Element => { 
   const {state, dispatch} = useContext(AppContext);
+  
+  useEffect(() => {
+    console.log(state)
+  },[state])
+
   useEffect(() => {
     const api = new APIService();
     api.loadPokemon().then(data => {

@@ -4,8 +4,10 @@ import IState from '../../types/interfaces';
 import TAction from '../actions';
 
 export const initialState: IState =  {
-    pokemon: [], 
+    pokemon: [],
+    favorites:[],
     loading: true
+
 }
 interface IContext {
   state: IState;

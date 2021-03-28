@@ -11,8 +11,9 @@ export default class Pokemon {
         this.id = id;
         this.createID();
     }
-    get displayCode(): any{
-        return this.id;
+    get displayCode(): string | undefined{
+        let num = this.id;
+        return num?.toString().padStart(3, "0"); 
     }
     get displayName(): string {
         return this.name;

@@ -3,7 +3,8 @@ import Pokemon from './models/pokemon';
 
 export default interface IState {
   pokemon: any;
-  loading: boolean 
+  favorites: any
+  loading: boolean
 }
 
 export interface APIResponse {
@@ -46,4 +47,7 @@ export interface IGetPokemon {
   type: ActionType.GET_POKEMON;
   payload: Array<Pokemon>;
 }
-
+export interface IAddToFavorite {
+  type: ActionType.ADD_TO_FAVORITE;
+  payload: string;
+}
