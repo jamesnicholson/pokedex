@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import AppContext from '../../store/context'
 import Pokemon from '../../types/models/pokemon';
 interface INameListProps {
-
 }
 export const Name = styled.h4`
     padding: 10px;
@@ -18,7 +17,7 @@ export const NameListWrapper = styled.div`
     min-width: 130px;
 `;
 const NameList: FC<INameListProps> = () => {
-    const {state, dispatch} = useContext(AppContext);
+    const {state} = useContext(AppContext);
     const {pokemon} = state;
     return  <NameListWrapper>
                 {pokemon.map((pokemon: Pokemon, index: number) => <Name key={index}>{pokemon.displayName}</Name>) }

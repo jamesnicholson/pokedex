@@ -1,4 +1,4 @@
-import {useEffect, useContext, useState} from 'react';
+import {useEffect, useContext} from 'react';
 import styled from 'styled-components';
 import APIService from '../../api/apiDataService'
 import AppContext from '../../store/context'
@@ -17,14 +17,12 @@ export const AppWrapper = styled.div`
   padding: 10px;
   color: ${props => props.theme.colors.main};
 `;
-
 export const PokeListWrapper = styled.div`
   display: flex;
   padding: 10px;
   flex-wrap: wrap;
   color: ${props => props.theme.colors.main};
 `;
-
 export const ListWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,9 +31,18 @@ export const ListWrapper = styled.div`
     display:none;
   }
 `;
-
-
-
+export const HeaderWrapper = styled.div`
+  display: flex;
+  padding: 6px;
+  color: ${props => props.theme.colors.main};
+`;
+export const SearchBar = styled.input`
+    width: 80%;
+    font-size: 1em;
+    padding: 11px;
+    margin-left: 15px;
+    margin-top: auto;
+`;
 const App = (): JSX.Element => {
 
   const {state, dispatch} = useContext(AppContext);
@@ -52,17 +59,17 @@ const App = (): JSX.Element => {
     });
   },[dispatch]);
 
-
   return  <>
-            <Title>Hello Pokedex</Title>
+            <HeaderWrapper>
+              <Title>Hello Pokédex</Title>
+              <SearchBar type="text" placeholder="Search Pokédex" />
+            </HeaderWrapper>
             <AppWrapper>
               <ListWrapper>
                 <Tabs />
               </ListWrapper>
               <PokeListWrapper>{state.pokemon.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}</PokeListWrapper>
             </AppWrapper>
-          </>
-      
+          </> 
 }
-
 export default App;

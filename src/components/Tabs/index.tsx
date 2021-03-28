@@ -5,31 +5,32 @@ import FavoriteList from '../FavoriteList'
 import NameList from '../NameList'
 
 interface ITabsProps {
-
 }
 interface styleTabContainerProps {
-    currentTab: string;
+  currentTab: string;
 }
   
 export const Name = styled.h4`
-    padding: 10px;
-    color: ${props => props.theme.colors.main};
-    text-shadow: 0px 0px 1px ${props => props.theme.colors.secondary};
+  padding: 10px;
+  color: ${props => props.theme.colors.main};
+  text-shadow: 0px 0px 1px ${props => props.theme.colors.secondary};
 `;
-export const NameListWrapper = styled.div`
-    background: #00bcd433;
-    text-align: center;
-    margin: 5px;
-    width: auto;
-    min-width: 130px;
+export const TabWrapper = styled.div`
+  background: #00bcd433;
+  text-align: center;
+  margin: 5px;
+  width: auto;
+  min-height: 500px;
+  max-height: 800px;
+  overflow: scroll;
 `;
 export const TabNameWrapper = styled.div`
   width:100%;
-  display: ${(props: styleTabContainerProps) => props.currentTab === "all" ? "show" : "none"};
+  display: ${(props: styleTabContainerProps) => props.currentTab === "allPokemon" ? "show" : "none"};
 `;
 export const TabFavoriteWrapper = styled.div`
   width:100%;
-  display: ${(props: styleTabContainerProps) => props.currentTab === "my" ? "show" : "none"};
+  display: ${(props: styleTabContainerProps) => props.currentTab === "myFavorites" ? "show" : "none"};
 `;
 export const TabButtonWrapper = styled.div`
   width:100%;
@@ -37,30 +38,27 @@ export const TabButtonWrapper = styled.div`
   flex-direction: row;
 `;
 export const TabButton = styled.div`
-  font-size:13px;
-  width:100%;
-  text-align:center;
+  font-size: 0.8em;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
 `;
 
 const Tabs: FC<ITabsProps> = () => {
 
-    const [toggleList, setToggleList] = useState("all");
-    const {state, dispatch} = useContext(AppContext);
-    const {pokemon} = state;
-    const handler = (tab: string) => {
-        setToggleList(tab);
-      }
-    
-    return  <NameListWrapper>
-
-                <TabButtonWrapper>
-                    <TabButton onClick={()=>handler("all")}>All pokemon</TabButton>
-                    <TabButton onClick={()=>handler("my")}>My Pokemon{state.favorites.length  === 0 ? "" : ` (${state.favorites.length})` }</TabButton>
-                </TabButtonWrapper>
-                
-                <TabNameWrapper currentTab={toggleList}> <NameList /> </TabNameWrapper>
-                <TabFavoriteWrapper currentTab={toggleList}> <FavoriteList /> </TabFavoriteWrapper>
-            </NameListWrapper>
-
+  const [toggleList, setToggleList] = useState("all");
+  const {state} = useContext(AppContext);
+  const handler = (tab: string) => {
+      setToggleList(tab);
+    }
+  
+  return  <TabWrapper>
+            <TabButtonWrapper>
+              <TabButton onClick={()=>handler("allPokemon")}>All</TabButton>
+              <TabButton onClick={()=>handler("myFavorites")}>My Pokédex{state.favorites.length  === 0 ? "" : ` (${state.favorites.length})` }</TabButton>
+            </TabButtonWrapper>
+            <TabNameWrapper currentTab={toggleList}> <NameList /> </TabNameWrapper>
+            <TabFavoriteWrapper currentTab={toggleList}> <FavoriteList /> </TabFavoriteWrapper>
+          </TabWrapper>
 }
 export default Tabs

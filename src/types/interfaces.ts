@@ -47,7 +47,7 @@ export interface IGetPokemon {
   type: ActionType.GET_POKEMON;
   payload: Array<Pokemon>;
 }
-export interface IAddToFavorite {
+export interface IToggleFavorite {
   type: ActionType.TOGGLE_FAVORITE;
   payload: string;
 }

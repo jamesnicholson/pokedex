@@ -1,16 +1,9 @@
 import { FC, useContext } from 'react'
 import styled from 'styled-components'
-import Pokemon from '../../types/models/pokemon'
-import {addToFavorite} from '../../store/actions'
 import AppContext from '../../store/context'
-import APIService from '../../api/apiDataService'
 
 interface IFavoriteListProps {
-}
-interface favProps {
-    isfavorite?: boolean;
-}
-  
+} 
 export const Name = styled.h4`
     padding: 10px;
     color: ${props => props.theme.colors.main};
@@ -24,9 +17,8 @@ export const FavoriteListWrapper = styled.div`
     min-width: 130px;
 `;
 
-
 const FavoriteList: FC<IFavoriteListProps> = () => {
-    const {state, dispatch} = useContext(AppContext);
+    const {state} = useContext(AppContext);
     const {favorites} = state;
     return  <FavoriteListWrapper>
                 {favorites.map((item: string, index: number) => <Name key={index}>{item}</Name>) }

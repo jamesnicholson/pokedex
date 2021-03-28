@@ -1,7 +1,7 @@
 import { FC, useContext } from 'react'
 import styled from 'styled-components'
 import Pokemon from '../../types/models/pokemon'
-import {addToFavorite} from '../../store/actions'
+import {toggleFavorite} from '../../store/actions'
 import AppContext from '../../store/context'
 import APIService from '../../api/apiDataService'
 
@@ -9,6 +9,7 @@ interface ICardProps {
     key:Number
     pokemon: Pokemon
 }
+
 interface favProps {
     isfavorite?: boolean;
 }
@@ -46,9 +47,9 @@ export const Favorite = styled.div`
 
 const Card: FC<ICardProps> = ({pokemon}) => {
     const {spriteURL, displayName, displayCode, isFavorite} = pokemon
-    const {state, dispatch} = useContext(AppContext);
+    const {dispatch} = useContext(AppContext);
     const handler = () => {
-        dispatch(addToFavorite(displayName));
+        dispatch(toggleFavorite(displayName));
         const api = new APIService();
         api.updateFavoriteCache(pokemon);
     }
