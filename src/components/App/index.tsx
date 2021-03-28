@@ -1,10 +1,12 @@
-import {useEffect, useContext} from 'react';
+import {useEffect, useContext, useState} from 'react';
 import styled from 'styled-components';
 import APIService from '../../api/apiDataService'
 import AppContext from '../../store/context'
 import Pokemon from '../../types/models/pokemon'
 import {savePokemon, setLoading} from '../../store/actions'
+import Tabs from '../Tabs'
 import Card from '../Card'
+
 export const Title = styled.h1`
   padding: 10px;
   color: ${props => props.theme.colors.main};
@@ -12,17 +14,35 @@ export const Title = styled.h1`
 `;
 export const AppWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
   padding: 10px;
   color: ${props => props.theme.colors.main};
 `;
 
-const App = (): JSX.Element => { 
+export const PokeListWrapper = styled.div`
+  display: flex;
+  padding: 10px;
+  flex-wrap: wrap;
+  color: ${props => props.theme.colors.main};
+`;
+
+export const ListWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 230px;
+  @media (max-width: 900px) {
+    display:none;
+  }
+`;
+
+
+
+const App = (): JSX.Element => {
+
   const {state, dispatch} = useContext(AppContext);
   
-  useEffect(() => {
+ /* useEffect(() => {
     console.log(state)
-  },[state])
+  },[state])*/
 
   useEffect(() => {
     const api = new APIService();
@@ -31,12 +51,18 @@ const App = (): JSX.Element => {
       dispatch(setLoading(false))
     });
   },[dispatch]);
-  return <>
-          <Title>Hello Pokedex</Title>
-          <AppWrapper>
-            {state.pokemon.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}
-          </AppWrapper>
-        </>
+
+
+  return  <>
+            <Title>Hello Pokedex</Title>
+            <AppWrapper>
+              <ListWrapper>
+                <Tabs />
+              </ListWrapper>
+              <PokeListWrapper>{state.pokemon.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}</PokeListWrapper>
+            </AppWrapper>
+          </>
+      
 }
 
 export default App;

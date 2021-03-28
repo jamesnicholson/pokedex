@@ -1,7 +1,7 @@
 export enum ActionType {
     SAVE_POKEMON,
     GET_POKEMON,
-    ADD_TO_FAVORITE,
+    TOGGLE_FAVORITE,
     REMOVE_TO_FAVORITE,
     SET_LOADING,
     CLEAR_LIST,

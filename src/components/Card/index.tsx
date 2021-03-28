@@ -4,18 +4,19 @@ import Pokemon from '../../types/models/pokemon'
 import {addToFavorite} from '../../store/actions'
 import AppContext from '../../store/context'
 import APIService from '../../api/apiDataService'
+
 interface ICardProps {
     key:Number
     pokemon: Pokemon
 }
-export interface favProps {
+interface favProps {
     isfavorite?: boolean;
 }
   
 export const Name = styled.h3`
-  padding: 10px;
-  color: ${props => props.theme.colors.main};
-  text-shadow: 0px 0px 1px ${props => props.theme.colors.secondary};
+    padding: 10px;
+    color: ${props => props.theme.colors.main};
+    text-shadow: 0px 0px 1px ${props => props.theme.colors.secondary};
 `;
 export const Code = styled.span`
     padding: 8px;
@@ -26,7 +27,7 @@ export const Code = styled.span`
     font-size: 12px;
 `;
 export const Sprite = styled.div`
-  padding: 10px;
+    padding: 10px;
 `;
 export const CardWrapper = styled.div`
     flex: 1 1 160px;
@@ -35,17 +36,16 @@ export const CardWrapper = styled.div`
     margin:5px;
 `;
 export const Favorite = styled.div`
-        padding: 8px;
-        background: ${(props: favProps) => props.isfavorite ? "#8bc34a" : "rebeccapurple"};
-        border-radius: 9px;
-        font-size: 1em;
-        color: white;
-        font-weight: bold;
+    padding: 8px;
+    background: ${(props: favProps) => props.isfavorite ? "#8bc34a" : "rebeccapurple"};
+    border-radius: 9px;
+    font-size: 1em;
+    color: white;
+    font-weight: bold;
 `;
 
 const Card: FC<ICardProps> = ({pokemon}) => {
     const {spriteURL, displayName, displayCode, isFavorite} = pokemon
-    console.log(isFavorite)
     const {state, dispatch} = useContext(AppContext);
     const handler = () => {
         dispatch(addToFavorite(displayName));

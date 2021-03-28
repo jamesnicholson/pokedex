@@ -48,6 +48,6 @@ export interface IGetPokemon {
   payload: Array<Pokemon>;
 }
 export interface IAddToFavorite {
-  type: ActionType.ADD_TO_FAVORITE;
+  type: ActionType.TOGGLE_FAVORITE;
   payload: string;
 }

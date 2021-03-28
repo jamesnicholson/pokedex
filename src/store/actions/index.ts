@@ -15,7 +15,7 @@ export const getPokemon = (payload: Array<Pokemon>): IGetPokemon => ({
     payload
 });
 export const addToFavorite = (payload: string): IAddToFavorite => ({
-    type: ActionType.ADD_TO_FAVORITE,
+    type: ActionType.TOGGLE_FAVORITE,
     payload
 });
 export type TAction = ISetLoading | ISavePokemon | IGetPokemon | IAddToFavorite;

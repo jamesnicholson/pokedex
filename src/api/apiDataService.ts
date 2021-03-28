@@ -11,7 +11,6 @@ export default class APIDataService {
             this.pokemon = await this.getPokemonFromApi();
             this.saveToCache();
         }
-        console.log(this.pokemon)
         return this.getPokemon;
     }
     
