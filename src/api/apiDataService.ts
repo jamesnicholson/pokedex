@@ -11,6 +11,7 @@ export default class APIDataService {
             this.pokemon = await this.getPokemonFromApi();
             this.saveToCache();
         }
+        console.log(this.pokemon)
         return this.getPokemon;
     }
     
@@ -30,6 +31,12 @@ export default class APIDataService {
     }
     updateCache(pokemon: Pokemon) {
         if(pokemon.id !== undefined) {
+            localStorage.setItem(pokemon.id.toString(), pokemon.toJson());
+        }
+    }
+    updateFavoriteCache(pokemon: Pokemon){
+        if(pokemon.id !== undefined) {
+            pokemon.toggleFavorite();
             localStorage.setItem(pokemon.id.toString(), pokemon.toJson());
         }
     }

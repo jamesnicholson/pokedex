@@ -1,14 +1,16 @@
 export default class Pokemon {
     id?: number;
     name: string;
+    favorite?: boolean = false
     url: string;
     types: any;
 
-    constructor(name: string, url: string, types:any, id?: number){
+    constructor(name: string, url: string, types:any, favorite?:boolean, id?: number){
         this.name = name;
         this.url = url;
         this.types = types;
         this.id = id;
+        this.favorite = favorite
         this.createID();
     }
     get displayCode(): string | undefined{
@@ -23,6 +25,12 @@ export default class Pokemon {
     }
     get speciesType(): string[] {
         return this.types.map((item:any) => item.name);
+    }
+    get isFavorite(): boolean | undefined {
+      return this.favorite;
+    }
+    toggleFavorite() {
+        this.favorite = !this.favorite
     }
     private createID() {
         if(this.id) {
@@ -39,7 +47,7 @@ export default class Pokemon {
     }
     static fromJson(json: string): Pokemon {
         const parsed = JSON.parse(json);
-        return new Pokemon(parsed.name, parsed.url, parsed.id);
+        return new Pokemon(parsed.name, parsed.url, parsed.types, parsed.favorite, parsed.id);
       
     }
 }

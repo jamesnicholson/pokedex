@@ -3,10 +3,15 @@ import styled from 'styled-components'
 import Pokemon from '../../types/models/pokemon'
 import {addToFavorite} from '../../store/actions'
 import AppContext from '../../store/context'
+import APIService from '../../api/apiDataService'
 interface ICardProps {
     key:Number
     pokemon: Pokemon
 }
+export interface favProps {
+    isfavorite?: boolean;
+}
+  
 export const Name = styled.h3`
   padding: 10px;
   color: ${props => props.theme.colors.main};
@@ -29,9 +34,9 @@ export const CardWrapper = styled.div`
     text-align: center;
     margin:5px;
 `;
-export const Favorite = styled.span`
+export const Favorite = styled.div`
         padding: 8px;
-        background: sandybrown;
+        background: ${(props: favProps) => props.isfavorite ? "#8bc34a" : "rebeccapurple"};
         border-radius: 9px;
         font-size: 1em;
         color: white;
@@ -39,11 +44,19 @@ export const Favorite = styled.span`
 `;
 
 const Card: FC<ICardProps> = ({pokemon}) => {
-  const {spriteURL, displayName, displayCode} = pokemon
-  const {state, dispatch} = useContext(AppContext);
+    const {spriteURL, displayName, displayCode, isFavorite} = pokemon
+    console.log(isFavorite)
+    const {state, dispatch} = useContext(AppContext);
+    const handler = () => {
+        dispatch(addToFavorite(displayName));
+        const api = new APIService();
+        api.updateFavoriteCache(pokemon);
+    }
     return  <CardWrapper>
                 <Code>{displayCode}</Code>
-                <Favorite onClick={()=>{dispatch(addToFavorite(displayName))}}> {"\u2606"}</Favorite>
+                <Favorite
+                    isfavorite={isFavorite}
+                    onClick={()=>{handler()}}> {"\u2606"}</Favorite>
                 <Sprite><img src={spriteURL} alt={displayName} /></Sprite>
                 <Name>{displayName}</Name>
             </CardWrapper>
