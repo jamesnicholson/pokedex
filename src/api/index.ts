@@ -3,7 +3,7 @@ import {APIResponse, APIResponseGeneric, APIResponsePokemonDetails,APIResponsePo
 
 export default class APIEndpoints {
     static readonly URI = 'https://pokeapi.co/api/v2/pokemon';
-    async getPokemon(limit = 5): Promise<Pokemon[]> {
+    async getPokemon(limit = 15): Promise<Pokemon[]> {
         const url_pokemon_list = `${APIEndpoints.URI}?limit=${limit}`;
         const parsedPokemonList: APIResponse = await fetch(url_pokemon_list).then(response => response.json());
         const pokemen = parsedPokemonList.results.map( async (i: APIResponseGeneric) => {

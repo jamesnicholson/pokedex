@@ -7,12 +7,10 @@ export default class APIDataService {
     async loadPokemon(): Promise<Pokemon[]> {
        if(this.isCached()){
             this.loadFromCache();
-
         }else{
             this.pokemon = await this.getPokemonFromApi();
             this.saveToCache();
         }
-        this.pokemon = await this.getPokemonFromApi();
         return this.getPokemon;
     }
     

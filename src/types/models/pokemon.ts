@@ -1,17 +1,18 @@
 export default class Pokemon {
-
     id?: number;
     name: string;
     url: string;
     types: any;
 
-    constructor(name: string, url: string, types:any, id?: number,){
+    constructor(name: string, url: string, types:any, id?: number){
         this.name = name;
         this.url = url;
         this.types = types;
         this.id = id;
         this.createID();
-
+    }
+    get displayCode(): any{
+        return this.id;
     }
     get displayName(): string {
         return this.name;
@@ -40,5 +41,4 @@ export default class Pokemon {
         return new Pokemon(parsed.name, parsed.url, parsed.id);
       
     }
-    
 }

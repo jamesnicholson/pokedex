@@ -10,6 +10,12 @@ export const Title = styled.h1`
   color: ${props => props.theme.colors.main};
   text-shadow: 0px 0px 2px ${props => props.theme.colors.secondary};
 `;
+export const AppWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  color: ${props => props.theme.colors.main};
+`;
 
 const App = (): JSX.Element => { 
   const {state, dispatch} = useContext(AppContext);
@@ -21,9 +27,11 @@ const App = (): JSX.Element => {
     });
   },[dispatch]);
   return <>
-      <Title>Hello Pokedex</Title>
-      {state.pokemon.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}
-      </>
+          <Title>Hello Pokedex</Title>
+          <AppWrapper>
+            {state.pokemon.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}
+          </AppWrapper>
+        </>
 }
 
 export default App;
