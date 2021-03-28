@@ -3,6 +3,7 @@ export enum ActionType {
     GET_POKEMON,
     TOGGLE_FAVORITE,
     SET_FAVORITES,
+    SET_SEARCH_TERM,
     SET_LOADING,
     CLEAR_LIST,
   }

@@ -6,6 +6,7 @@ import TAction from '../actions';
 export const initialState: IState =  {
     pokemon: [],
     favorites:[],
+    searchTerm: "",
     loading: true
 
 }

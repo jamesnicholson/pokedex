@@ -1,5 +1,5 @@
 import Pokemon from '../../types/models/pokemon';
-import {ISetLoading, ISetPokemon, IGetPokemon, IToggleFavorite, ISetFavorites } from '../../types/interfaces';
+import {ISetLoading, ISetPokemon, IGetPokemon, IToggleFavorite, ISetFavorites, ISetSearchTerm } from '../../types/interfaces';
 import {ActionType} from '../../types/enums'
 
 export const setLoading = (payload:boolean): ISetLoading => ({
@@ -22,6 +22,9 @@ export const toggleFavorite = (payload: Pokemon): IToggleFavorite => ({
     type: ActionType.TOGGLE_FAVORITE,
     payload
 });
-export type TAction = ISetLoading | ISetPokemon | IGetPokemon | IToggleFavorite | ISetFavorites;
-  
+export const setSearchTerm = (payload: string): ISetSearchTerm => ({
+    type: ActionType.SET_SEARCH_TERM,
+    payload
+});
+type TAction = ISetLoading | ISetPokemon | IGetPokemon | IToggleFavorite | ISetFavorites | ISetSearchTerm;
 export default TAction

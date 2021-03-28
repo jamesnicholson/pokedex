@@ -3,8 +3,9 @@ import Pokemon from './models/pokemon';
 
 export default interface IState {
   pokemon: any;
-  favorites: any
-  loading: boolean
+  favorites: any;
+  searchTerm: any;
+  loading: boolean;
 }
 
 export interface APIResponse {
@@ -54,4 +55,8 @@ export interface IToggleFavorite {
 export interface ISetFavorites{
   type: ActionType.SET_FAVORITES;
   payload: Array<Pokemon>;
+}
+export interface ISetSearchTerm{
+  type: ActionType.SET_SEARCH_TERM;
+  payload: string;
 }

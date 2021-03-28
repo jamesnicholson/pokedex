@@ -4,8 +4,10 @@ import APIService from '../../api/apiDataService'
 import AppContext from '../../store/context'
 import Pokemon from '../../types/models/pokemon'
 import {setPokemon, setLoading, setFavorties} from '../../store/actions'
+import {useSearch} from '../../hooks'
 import Tabs from '../Tabs'
 import Card from '../Card'
+import SearchBar from '../SearchBar'
 
 export const Title = styled.h1`
   padding: 10px;
@@ -19,7 +21,6 @@ export const AppWrapper = styled.div`
 `;
 export const PokeListWrapper = styled.div`
   display: flex;
-  padding: 10px;
   flex-wrap: wrap;
   color: ${props => props.theme.colors.main};
 `;
@@ -36,18 +37,13 @@ export const HeaderWrapper = styled.div`
   padding: 6px;
   color: ${props => props.theme.colors.main};
 `;
-export const SearchBar = styled.input`
-    width: 80%;
-    font-size: 1em;
-    padding: 11px;
-    margin-left: 15px;
-    margin-top: auto;
-`;
+
 const App = (): JSX.Element => {
 
   const {state, dispatch} = useContext(AppContext);
-  
-  /*useEffect(() => {
+  const {searchTerm, pokemon} =  state
+  const search = useSearch(searchTerm, pokemon);
+ /* useEffect(() => {
     console.log(state)
   },[state])*/
 
@@ -63,13 +59,13 @@ const App = (): JSX.Element => {
   return  <>
             <HeaderWrapper>
               <Title>Hello Pokédex</Title>
-              <SearchBar type="text" placeholder="Search Pokédex" />
+              <SearchBar />
             </HeaderWrapper>
             <AppWrapper>
               <ListWrapper>
                 <Tabs />
               </ListWrapper>
-              <PokeListWrapper>{state.pokemon.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}</PokeListWrapper>
+              <PokeListWrapper>{search.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}</PokeListWrapper>
             </AppWrapper>
           </> 
 }

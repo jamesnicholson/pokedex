@@ -8,6 +8,8 @@ function reducer(state: IState, action: TActions): IState{
     switch(type){
         case ActionType.SET_POKEMON:
             return {...state, pokemon: payload}
+        case ActionType.SET_SEARCH_TERM:
+            return {...state, searchTerm: payload}
         case ActionType.SET_LOADING:
             return {...state, loading: false}
         case ActionType.SET_FAVORITES:
