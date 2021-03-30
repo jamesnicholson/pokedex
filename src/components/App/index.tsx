@@ -9,7 +9,7 @@ import Tabs from '../Tabs'
 import Card from '../Card'
 import SpeciesTypeFilters from '../SpeciesTypeFilters'
 import SearchBar from '../SearchBar'
-
+import LoadingIndicator from '../LoadingIndicator'
 export const Title = styled.h1`
   padding: 10px;
   color: ${props => props.theme.colors.main};
@@ -42,9 +42,9 @@ export const HeaderWrapper = styled.div`
 const App = (): JSX.Element => {
 
   const {state, dispatch} = useContext(AppContext);
-  const {searchTerm, pokemon} =  state
+  const {searchTerm, pokemon, loading} =  state
   const search = useSearch(searchTerm, pokemon);
- /* useEffect(() => {
+  /*useEffect(() => {
     console.log(state)
   },[state])*/
 
@@ -53,10 +53,11 @@ const App = (): JSX.Element => {
     api.loadPokemon().then(data => {
       dispatch(setPokemon(data))
       dispatch(setFavorties(data.filter((pokemon: Pokemon) => pokemon.isFavorite)))
-      dispatch(setLoading(false))
-    });
+    }).finally(() => dispatch(setLoading(false)));
   },[dispatch]);
-
+  if(loading){
+    return <LoadingIndicator />
+  }
   return  <>
             <HeaderWrapper>
               <Title>Hello Pokédex</Title>

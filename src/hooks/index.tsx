@@ -59,7 +59,9 @@ export const useFindColor = (speciesType:Array<string>): Array<string> => {
             if(species.toLowerCase() ===  item.type.toLowerCase()){
                 colors.push(item.color)
             }
+            return null;
         })
+        return null;
     })
     return colors
 }

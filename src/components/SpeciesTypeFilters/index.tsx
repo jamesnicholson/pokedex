@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect } from 'react'
+import { FC, useContext } from 'react'
 import styled from 'styled-components'
 import AppContext from '../../store/context'
 import {pokemonType} from '../../hooks'
