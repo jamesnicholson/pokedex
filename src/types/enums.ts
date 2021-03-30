@@ -4,6 +4,7 @@ export enum ActionType {
     TOGGLE_FAVORITE,
     SET_FAVORITES,
     SET_SEARCH_TERM,
+    SET_SEARCH_FILTERS,
     SET_LOADING,
     CLEAR_LIST,
   }

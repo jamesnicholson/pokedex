@@ -5,6 +5,7 @@ export default interface IState {
   pokemon: any;
   favorites: any;
   searchTerm: any;
+  searchFilters: any;
   loading: boolean;
 }
 
@@ -57,4 +58,8 @@ export interface ISetFavorites{
 export interface ISetSearchTerm{
   type: ActionType.SET_SEARCH_TERM;
   payload: string;
+}
+export interface ISetSearchFilters{
+  type: ActionType.SET_SEARCH_FILTERS;
+  payload: Array<string> | string;
 }

@@ -10,6 +10,13 @@ function reducer(state: IState, action: TActions): IState{
             return {...state, pokemon: payload}
         case ActionType.SET_SEARCH_TERM:
             return {...state, searchTerm: payload}
+        case ActionType.SET_SEARCH_FILTERS:
+            
+            if(state.searchFilters.indexOf(payload) < 0){
+                return {...state, searchFilters: [...state.searchFilters, payload]}
+            }else{
+                return {...state, searchFilters: state.searchFilters.filter((name: string) => name !== payload )}
+            }  
         case ActionType.SET_LOADING:
             return {...state, loading: false}
         case ActionType.SET_FAVORITES:

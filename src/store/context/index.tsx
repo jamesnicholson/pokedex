@@ -7,6 +7,7 @@ export const initialState: IState =  {
     pokemon: [],
     favorites:[],
     searchTerm: "",
+    searchFilters:[],
     loading: true
 
 }

@@ -10,7 +10,7 @@ const SearchBar = styled.input`
     margin-right: 15px;
     margin-top: auto;
 `
-export const pokemonType: { type: String, color: string }[] = [
+export const pokemonType: { type: string, color: string }[] = [
     { "type": "Normal", "color": "#A8A878" },
     { "type": "Fire", "color": "#F08030" },
     { "type": "Water", "color": "#6890F0" },
@@ -42,6 +42,14 @@ export const useInput = (): [string,ReactNode] => {
                     placeholder="PokéSearch..."
                 />;
     return [value, input];
+};
+
+export const useFilter = (searchTerm: string, pokemon: Array<Pokemon>): Array<Pokemon> => {
+    const term = searchTerm.toLowerCase();
+    const result =  pokemon.filter((obj) =>
+        JSON.stringify(obj.speciesType).toLowerCase().includes(term)
+    )
+   return result
 };
 
 export const useSearch = (searchTerm: string, pokemon: Array<Pokemon>): Array<Pokemon> => {

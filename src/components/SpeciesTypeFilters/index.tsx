@@ -1,7 +1,9 @@
 import { FC, useContext } from 'react'
 import styled from 'styled-components'
 import AppContext from '../../store/context'
+import {setSearchFilters} from '../../store/actions'
 import {pokemonType} from '../../hooks'
+import set from '../../store/actions'
 interface SpeciesTypeFiltersProps {
 }
 interface favProps {
@@ -20,13 +22,14 @@ export const Text = styled.div`
     margin:2px;
 `;
 
-
 const SpeciesTypeFilters: FC<SpeciesTypeFiltersProps> = () => {
     const {dispatch} = useContext(AppContext);
-
-
+    const handler = (name:string) => {
+        console.log("name", name.toLowerCase());
+        dispatch(setSearchFilters(name))
+    }
     return  <SpeciesTypeFiltersWrapper>
-                {pokemonType.map(({type, color}, index) =><Text key={index} color={color}>{type}</Text>)}
+                {pokemonType.map(({type, color}, index) =><Text key={index} onClick={()=> handler(type)} color={color}>{type}</Text>)}
             </SpeciesTypeFiltersWrapper>
 
 }

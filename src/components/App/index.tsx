@@ -4,12 +4,12 @@ import APIService from '../../api/apiDataService'
 import AppContext from '../../store/context'
 import Pokemon from '../../types/models/pokemon'
 import {setPokemon, setLoading, setFavorties} from '../../store/actions'
-import {useSearch} from '../../hooks'
 import Tabs from '../Tabs'
-import Card from '../Card'
 import SpeciesTypeFilters from '../SpeciesTypeFilters'
+import PokeList from '../PokeList'
 import SearchBar from '../SearchBar'
 import LoadingIndicator from '../LoadingIndicator'
+
 export const Title = styled.h1`
   padding: 10px;
   color: ${props => props.theme.colors.main};
@@ -18,11 +18,6 @@ export const Title = styled.h1`
 export const AppWrapper = styled.div`
   display: flex;
   padding: 10px;
-  color: ${props => props.theme.colors.main};
-`;
-export const PokeListWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
   color: ${props => props.theme.colors.main};
 `;
 export const ListWrapper = styled.div`
@@ -42,11 +37,12 @@ export const HeaderWrapper = styled.div`
 const App = (): JSX.Element => {
 
   const {state, dispatch} = useContext(AppContext);
-  const {searchTerm, pokemon, loading} =  state
-  const search = useSearch(searchTerm, pokemon);
-  /*useEffect(() => {
+  const  {loading} =  state
+  
+
+  useEffect(() => {
     console.log(state)
-  },[state])*/
+  },[state])
 
   useEffect(() => {
     const api = new APIService();
@@ -68,7 +64,7 @@ const App = (): JSX.Element => {
               <ListWrapper>
                 <Tabs />
               </ListWrapper>
-              <PokeListWrapper>{search.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}</PokeListWrapper>
+              <PokeList />
             </AppWrapper>
           </> 
 }
