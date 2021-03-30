@@ -4,12 +4,14 @@ import Pokemon from '../../types/models/pokemon'
 import {toggleFavorite} from '../../store/actions'
 import AppContext from '../../store/context'
 import APIService from '../../api/apiDataService'
-
+import {useFindColor} from '../../hooks'
 interface ICardProps {
     key:Number
     pokemon: Pokemon
 }
-
+interface colorProps {
+    colors: Array<string>;
+}
 interface favProps {
     isfavorite?: boolean;
 }
@@ -35,6 +37,13 @@ export const CardWrapper = styled.div`
     background: khaki;
     text-align: center;
     margin:5px;
+    background: ${(props: colorProps) => {
+            if(props.colors.length === 1){
+                return props.colors 
+            } else if(props.colors.length > 1) {
+                return `linear-gradient(${props.colors[0]}, ${props.colors[1]})`
+            }
+    }};
 `;
 export const Favorite = styled.div`
     padding: 8px;
@@ -44,16 +53,16 @@ export const Favorite = styled.div`
     color: white;
     font-weight: bold;
 `;
-
 const Card: FC<ICardProps> = ({pokemon}) => {
-    const {spriteURL, displayName, displayCode, isFavorite} = pokemon
+    const {spriteURL, displayName, displayCode, isFavorite, speciesType} = pokemon
+    const colors = useFindColor(speciesType);
     const {dispatch} = useContext(AppContext);
     const handler = () => {
         dispatch(toggleFavorite(pokemon));
         const api = new APIService();
         api.updateFavoriteCache(pokemon);
     }
-    return  <CardWrapper>
+    return  <CardWrapper colors={colors}>
                 <Code>{displayCode}</Code>
                 <Favorite
                     isfavorite={isFavorite}

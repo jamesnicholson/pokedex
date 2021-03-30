@@ -7,6 +7,7 @@ import {setPokemon, setLoading, setFavorties} from '../../store/actions'
 import {useSearch} from '../../hooks'
 import Tabs from '../Tabs'
 import Card from '../Card'
+import SpeciesTypeFilters from '../SpeciesTypeFilters'
 import SearchBar from '../SearchBar'
 
 export const Title = styled.h1`
@@ -61,6 +62,7 @@ const App = (): JSX.Element => {
               <Title>Hello Pokédex</Title>
               <SearchBar />
             </HeaderWrapper>
+            <SpeciesTypeFilters />
             <AppWrapper>
               <ListWrapper>
                 <Tabs />

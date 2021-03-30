@@ -30,8 +30,6 @@ export interface APIResponsePokemonTypes{
   type: Array<APIResponseGeneric>;
 }
 
-
-
 export interface IAction {
   type: ActionType;
   payload: any;
