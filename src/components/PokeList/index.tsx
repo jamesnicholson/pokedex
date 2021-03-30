@@ -1,29 +1,33 @@
-import { FC, useContext } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import AppContext from '../../store/context'
-import {setSearchFilters} from '../../store/actions'
-import {useSearch} from '../../hooks'
+import {useSearch, useFilter} from '../../hooks'
 import Card from '../Card'
 import Pokemon from '../../types/models/pokemon'
+
 interface PokeListProps {
 }
-interface favProps {
-    color?: string;
-}
 
-export const PokeListWrapper = styled.div`
+const PokeListWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     color: ${props => props.theme.colors.main};
 `;
 
 const PokeList: FC<PokeListProps> = () => {
+    const [pokemonList, setPokemonList] = useState<Array<Pokemon>>([])
     const {state, dispatch} = useContext(AppContext);
-    const {searchTerm, pokemon, loading} =  state;
+    const {searchTerm, pokemon, searchFilters} =  state;
     const search = useSearch(searchTerm, pokemon);
-
+    const filters = useFilter(pokemon, searchFilters);
+    useEffect(() => { 
+        setPokemonList(filters)
+    }, [searchFilters])
+    useEffect(() => { 
+        setPokemonList(search)
+    }, [searchTerm])
     return  <PokeListWrapper>
-               {search.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}
+               {pokemonList.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}
             </PokeListWrapper>
 
 }
