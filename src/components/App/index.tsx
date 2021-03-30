@@ -32,14 +32,16 @@ export const HeaderWrapper = styled.div`
   display: flex;
   padding: 6px;
   color: ${props => props.theme.colors.main};
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;
 
 const App = (): JSX.Element => {
 
   const {state, dispatch} = useContext(AppContext);
-  const  {loading} =  state
+  const {loading} = state
   
-
   useEffect(() => {
     console.log(state)
   },[state])

@@ -1,8 +1,6 @@
 import { FC, useContext } from 'react'
 import styled from 'styled-components'
 import AppContext from '../../store/context'
-import Pokemon from '../../types/models/pokemon';
-
 
 interface ILoadingIndicatorProps {
 } 
@@ -25,6 +23,5 @@ const LoadingIndicator: FC<ILoadingIndicatorProps> = () => {
     return  <LoadingIndicatorWrapper>
                 Loading
             </LoadingIndicatorWrapper>
-
 }
 export default LoadingIndicator

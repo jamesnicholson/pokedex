@@ -21,7 +21,7 @@ export const Name = styled.h3`
     color: ${props => props.theme.colors.main};
     text-shadow: 0px 0px 1px ${props => props.theme.colors.secondary};
 `;
-export const Code = styled.span`
+export const Code = styled.div`
     padding: 8px;
     background: #ffc107;
     color: white;
@@ -32,17 +32,22 @@ export const Code = styled.span`
 export const Sprite = styled.div`
     padding: 10px;
 `;
+export const CardHeader = styled.div`
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+`;
 export const CardWrapper = styled.div`
     flex: 1 1 160px;
     background: khaki;
     text-align: center;
     margin:5px;
     background: ${(props: colorProps) => {
-            if(props.colors.length === 1){
-                return props.colors 
-            } else if(props.colors.length > 1) {
-                return `linear-gradient(${props.colors[0]}, ${props.colors[1]})`
-            }
+        if(props.colors.length === 1){
+            return props.colors 
+        } else if(props.colors.length > 1) {
+            return `linear-gradient(${props.colors[0]}, ${props.colors[1]})`
+        }
     }};
 `;
 export const Favorite = styled.div`
@@ -63,12 +68,15 @@ const Card: FC<ICardProps> = ({pokemon}) => {
         api.updateFavoriteCache(pokemon);
     }
     return  <CardWrapper colors={colors}>
-                <Code>{displayCode}</Code>
-                <Favorite
-                    isfavorite={isFavorite}
-                    onClick={()=>{handler()}}> {"\u2606"}</Favorite>
-                <Sprite><img src={spriteURL} alt={displayName} /></Sprite>
+                <CardHeader>
+                    <Code>{displayCode}</Code>
+                    <Favorite
+                        isfavorite={isFavorite}
+                        onClick={()=>{handler()}}> {"\u2606"}</Favorite>
+                </CardHeader>
                 <Name>{displayName}</Name>
+                <Sprite><img src={spriteURL} alt={displayName} /></Sprite>
+     
             </CardWrapper>
 
 }

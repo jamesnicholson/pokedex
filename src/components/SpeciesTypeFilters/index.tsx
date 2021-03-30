@@ -13,13 +13,17 @@ interface favProps {
 }
 export const SpeciesTypeFiltersWrapper = styled.div`
     width:100%;
-    margin:5px;
+    margin:15px;
     margin-left: 35px;
+    @media (max-width: 900px) {
+        margin-left: 15px;
+        margin-top: 0px;
+    }
     margin-top: 25px;
 `;
 export const Text = styled.div`
     background: ${(props: favProps) => props.color};
-    border: ${(props: favProps) => props.searchFilter.includes(props.type) ? "1px solid black" : "none" };
+    border: ${(props: favProps) => props.searchFilter.includes(props.type) ? "2px solid black" : "none" };
     padding: 7px;
     display: inline-block;
     margin:2px;

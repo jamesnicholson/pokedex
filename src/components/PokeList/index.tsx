@@ -16,7 +16,7 @@ const PokeListWrapper = styled.div`
 
 const PokeList: FC<PokeListProps> = () => {
     const [pokemonList, setPokemonList] = useState<Array<Pokemon>>([])
-    const {state, dispatch} = useContext(AppContext);
+    const {state} = useContext(AppContext);
     const {searchTerm, pokemon, searchFilters} =  state;
     const search = useSearch(searchTerm, pokemon);
     const filters = useFilter(pokemon, searchFilters);
@@ -26,6 +26,9 @@ const PokeList: FC<PokeListProps> = () => {
     useEffect(() => { 
         setPokemonList(search)
     }, [searchTerm])
+    useEffect(() => { 
+        console.log(filters)
+    }, [filters])
     return  <PokeListWrapper>
                {pokemonList.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}
             </PokeListWrapper>

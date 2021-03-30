@@ -8,9 +8,14 @@ interface ISearchBarProps {
 }
 export const SearchBarWrapper = styled.div`
     width:100%;
-    margin:5px;
+    margin:15px;
     margin-left: 35px;
     margin-top: 25px;
+    @media (max-width: 900px) {
+        margin-left: 0px;
+        margin-top: 0px;
+        width:95%;
+      }
 `;
 
 const SearchBar: FC<ISearchBarProps> = () => {
