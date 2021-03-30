@@ -3,11 +3,13 @@ import styled from 'styled-components'
 import AppContext from '../../store/context'
 import {setSearchFilters} from '../../store/actions'
 import {pokemonType} from '../../hooks'
-import set from '../../store/actions'
+
 interface SpeciesTypeFiltersProps {
 }
 interface favProps {
     color?: string;
+    type?: string;
+    searchFilter:any;
 }
 export const SpeciesTypeFiltersWrapper = styled.div`
     width:100%;
@@ -17,19 +19,29 @@ export const SpeciesTypeFiltersWrapper = styled.div`
 `;
 export const Text = styled.div`
     background: ${(props: favProps) => props.color};
+    border: ${(props: favProps) => props.searchFilter.includes(props.type) ? "1px solid black" : "none" };
     padding: 7px;
     display: inline-block;
     margin:2px;
 `;
 
 const SpeciesTypeFilters: FC<SpeciesTypeFiltersProps> = () => {
-    const {dispatch} = useContext(AppContext);
+    const {state, dispatch} = useContext(AppContext);
+    const {searchFilters} = state
     const handler = (name:string) => {
-        console.log("name", name.toLowerCase());
         dispatch(setSearchFilters(name))
     }
     return  <SpeciesTypeFiltersWrapper>
-                {pokemonType.map(({type, color}, index) =><Text key={index} onClick={()=> handler(type)} color={color}>{type}</Text>)}
+                {pokemonType.map(({type, color}, index) =>
+                        <Text 
+                            key={index}
+                            onClick={()=> handler(type)}
+                            color={color}
+                            type={type}
+                            searchFilter={searchFilters}
+                            >
+                                {type}
+                        </Text>)}
             </SpeciesTypeFiltersWrapper>
 
 }
