@@ -20,15 +20,14 @@ const PokeList: FC<PokeListProps> = () => {
     const {searchTerm, pokemon, searchFilters} =  state;
     const search = useSearch(searchTerm, pokemon);
     const filters = useFilter(pokemon, searchFilters);
-    useEffect(() => { 
-        setPokemonList(filters)
-    }, [searchFilters])
+
     useEffect(() => { 
         setPokemonList(search)
     }, [searchTerm])
     useEffect(() => { 
-        console.log(filters)
+        setPokemonList(filters) 
     }, [filters])
+
     return  <PokeListWrapper>
                {pokemonList.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}
             </PokeListWrapper>

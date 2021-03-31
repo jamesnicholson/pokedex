@@ -1,4 +1,4 @@
-import { useState, useRef, ReactNode } from 'react'
+import { useState, useRef, ReactNode, useEffect } from 'react'
 import styled from 'styled-components'
 import Pokemon from '../types/models/pokemon';
 
@@ -45,12 +45,20 @@ export const useInput = (): [string,ReactNode] => {
 };
 
 export const useFilter = (pokemon: Array<Pokemon>, searchFilters: Array<string>): Array<Pokemon> => {
-   var result = pokemon.filter(function(e) {
-        return e.types.some(function(a:any) {
-            return searchFilters.indexOf(a.name) != -1
-        })
-    })
-   return result
+    const [value, setValue] = useState<Array<Pokemon>>(pokemon ? pokemon : []);
+    useEffect(() => {
+        if(searchFilters.length !== 0){
+            var result = pokemon.filter(function(e) {
+                return e.types.some(function(a:any) {
+                    return searchFilters.indexOf(a.name) != -1
+                })
+            })
+            setValue(result)
+        }else{
+            setValue(pokemon)
+        }
+    },[searchFilters, pokemon])
+   return value
 };
 
 export const useSearch = (searchTerm: string, pokemon: Array<Pokemon>): Array<Pokemon> => {
