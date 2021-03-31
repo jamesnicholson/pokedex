@@ -21,7 +21,7 @@ export const TabWrapper = styled.div`
   margin: 5px;
   width: auto;
   min-height: 500px;
-  max-height: 800px;
+  max-height: 600px;
   overflow: scroll;
 `;
 export const TabNameWrapper = styled.div`

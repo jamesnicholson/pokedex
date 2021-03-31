@@ -17,8 +17,13 @@ export const Title = styled.h1`
 `;
 export const AppWrapper = styled.div`
   display: flex;
-  padding: 10px;
+  padding: 0 10px;
   color: ${props => props.theme.colors.main};
+`;
+export const TitleWrapper = styled.div`
+  padding: 10px 0;
+  width: 237px;
+  display: table;
 `;
 export const ListWrapper = styled.div`
   display: flex;
@@ -41,10 +46,6 @@ const App = (): JSX.Element => {
 
   const {state, dispatch} = useContext(AppContext);
   const {loading} = state
-  
-  useEffect(() => {
-    console.log(state)
-  },[state])
 
   useEffect(() => {
     const api = new APIService();
@@ -58,10 +59,14 @@ const App = (): JSX.Element => {
   }
   return  <>
             <HeaderWrapper>
-              <Title>Hello Pokédex</Title>
-              <SearchBar />
+              <TitleWrapper>
+                 <Title>Hello Pokédex</Title>
+              </TitleWrapper>
+              <div>
+                <SearchBar />
+                <SpeciesTypeFilters />
+              </div>
             </HeaderWrapper>
-            <SpeciesTypeFilters />
             <AppWrapper>
               <ListWrapper>
                 <Tabs />

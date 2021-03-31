@@ -6,9 +6,6 @@ const SearchBar = styled.input`
     width: 95%;
     font-size: 1em;
     padding: 11px;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-top: auto;
 `
 export const pokemonType: { type: string, color: string }[] = [
     { "type": "normal", "color": "#A8A878" },
@@ -50,7 +47,7 @@ export const useFilter = (pokemon: Array<Pokemon>, searchFilters: Array<string>)
         if(searchFilters.length !== 0){
             var result = pokemon.filter(function(e) {
                 return e.types.some(function(a:any) {
-                    return searchFilters.indexOf(a.name) != -1
+                    return searchFilters.indexOf(a.name) !== -1
                 })
             })
             setValue(result)

@@ -13,13 +13,10 @@ interface favProps {
 }
 export const SpeciesTypeFiltersWrapper = styled.div`
     width:100%;
-    margin:15px;
-    margin-left: 35px;
+    margin-top:10px;
     @media (max-width: 900px) {
-        margin-left: 15px;
-        margin-top: 0px;
     }
-    margin-top: 25px;
+
 `;
 export const Text = styled.div`
     background: ${(props: favProps) => props.color};

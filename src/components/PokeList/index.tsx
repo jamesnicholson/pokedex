@@ -11,6 +11,7 @@ interface PokeListProps {
 const PokeListWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
+    width:100%;
     color: ${props => props.theme.colors.main};
 `;
 

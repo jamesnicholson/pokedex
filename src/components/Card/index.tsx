@@ -38,7 +38,7 @@ export const CardHeader = styled.div`
     justify-content: space-between;
 `;
 export const CardWrapper = styled.div`
-    flex: 1 1 160px;
+    flex: 1 1 200px;
     background: khaki;
     text-align: center;
     margin:5px;
