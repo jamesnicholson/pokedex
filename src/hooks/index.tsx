@@ -47,7 +47,7 @@ export const useFilter = (pokemon: Array<Pokemon>, searchFilters: Array<string>)
         if(searchFilters.length !== 0){
             var result = pokemon.filter(function(e) {
                 return e.details.types.some(function(a:any) {
-                    return searchFilters.indexOf(a.name) !== -1
+                    return searchFilters.indexOf(a) !== -1
                 })
             })
             setValue(result)
