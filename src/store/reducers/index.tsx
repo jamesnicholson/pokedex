@@ -1,6 +1,6 @@
 import IState from '../../types/interfaces';
 import TActions from '../actions';
-import {ActionType} from '../../types/enums'
+import {ActionType} from '../actions/enums'
 import Pokemon from '../../models/pokemon';
 
 function reducer(state: IState, action: TActions): IState{
@@ -11,7 +11,6 @@ function reducer(state: IState, action: TActions): IState{
         case ActionType.SET_SEARCH_TERM:
             return {...state, searchTerm: payload}
         case ActionType.SET_SEARCH_FILTERS:
-            
             if(state.searchFilters.indexOf(payload) < 0){
                 return {...state, searchFilters: [...state.searchFilters, payload]}
             }else{

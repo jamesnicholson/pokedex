@@ -17,17 +17,28 @@ export const NameListWrapper = styled.div`
     width: auto;
     min-width: 130px;
 `;
-
+export const NameWrapper = styled.div`
+    display:flex;
+    background: #fff;
+    justify-content: space-between;
+    text-align: left;
+    margin: 5px;
+    width: 93%;
+    min-width: 130px;
+    padding: 3px;
+    vertical-align: middle;
+    box-shadow: 0px 0px 1px 1px #050708;
+`;
 const NameList: FC<INameListProps> = () => {
     const {state} = useContext(AppContext);
     const {pokemon} = state;
     
     return  <NameListWrapper>
                 {pokemon.map((_pokemon: Pokemon, index: number) => {
-                    return  <div key={index}>
+                    return  <NameWrapper key={index}>
                                 <Name>{_pokemon.displayName}</Name>
                                 <img src={_pokemon.secondarySpriteURL} />
-                            </div>
+                            </NameWrapper>
                 })}
             </NameListWrapper>
 

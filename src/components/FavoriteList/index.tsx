@@ -17,7 +17,18 @@ export const FavoriteListWrapper = styled.div`
     width: auto;
     min-width: 130px;
 `;
-
+export const NameWrapper = styled.div`
+    display:flex;
+    background: #fff;
+    justify-content: space-between;
+    text-align: left;
+    margin: 5px;
+    width: 93%;
+    min-width: 130px;
+    padding: 3px;
+    vertical-align: middle;
+    box-shadow: 0px 0px 1px 1px #050708;
+`;
 const FavoriteList: FC<IFavoriteListProps> = () => {
     const {state} = useContext(AppContext);
     const {favorites} = state;
@@ -25,7 +36,12 @@ const FavoriteList: FC<IFavoriteListProps> = () => {
         return <div>Your favorite Pokémon will appear here.</div> 
     }
     return  <FavoriteListWrapper>
-                {favorites.map((pokemon: Pokemon, index: number) => <Name key={index}>{pokemon.displayName}</Name>)}
+                {favorites.map((_pokemon: Pokemon, index: number) => {
+                    return  <NameWrapper key={index}>
+                                <Name>{_pokemon.displayName}</Name>
+                                <img src={_pokemon.secondarySpriteURL} />
+                            </NameWrapper>
+                })}
             </FavoriteListWrapper>
 
 }

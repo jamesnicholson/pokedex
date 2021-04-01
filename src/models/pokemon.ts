@@ -1,4 +1,3 @@
-import { Type } from "../api/apiResponsePokeDetails";
 import { FormatedDetails } from "../api/interfaces";
 
 export default class Pokemon {
@@ -32,9 +31,6 @@ export default class Pokemon {
     }
     get secondarySpriteURL(): string {
         return this.details.sprites.secondary
-    }
-    get generationOneSprite(): string {
-        return ""
     }
     get isFavorite(): boolean | undefined {
       return this.favorite;

@@ -1,4 +1,4 @@
-import {ActionType} from '../../types/enums'
+import {ActionType} from './enums'
 import Pokemon from '../../models/pokemon';
 export interface IAction {
     type: ActionType;
