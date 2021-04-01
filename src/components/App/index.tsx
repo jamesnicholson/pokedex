@@ -2,7 +2,7 @@ import {useEffect, useContext} from 'react';
 import styled from 'styled-components';
 import APIService from '../../api/apiDataService'
 import AppContext from '../../store/context'
-import Pokemon from '../../types/models/pokemon'
+import Pokemon from '../../models/pokemon'
 import {setPokemon, setLoading, setFavorties} from '../../store/actions'
 import Tabs from '../Tabs'
 import SpeciesTypeFilters from '../SpeciesTypeFilters'
@@ -54,6 +54,7 @@ const App = (): JSX.Element => {
       dispatch(setFavorties(data.filter((pokemon: Pokemon) => pokemon.isFavorite)))
     }).finally(() => dispatch(setLoading(false)));
   },[dispatch]);
+  
   if(loading){
     return <LoadingIndicator />
   }

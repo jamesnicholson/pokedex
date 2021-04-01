@@ -1,10 +1,11 @@
 import { FC, useContext } from 'react'
 import styled from 'styled-components'
-import Pokemon from '../../types/models/pokemon'
+import Pokemon from '../../models/pokemon'
 import {toggleFavorite} from '../../store/actions'
 import AppContext from '../../store/context'
 import APIService from '../../api/apiDataService'
 import {useFindColor} from '../../hooks'
+
 interface ICardProps {
     key:Number
     pokemon: Pokemon
@@ -76,8 +77,6 @@ const Card: FC<ICardProps> = ({pokemon}) => {
                 </CardHeader>
                 <Name>{displayName}</Name>
                 <Sprite><img src={spriteURL} alt={displayName} /></Sprite>
-     
             </CardWrapper>
-
 }
 export default Card

@@ -1,30 +1,40 @@
+import { Type } from "../api/apiResponsePokeDetails";
+import { FormatedDetails } from "../api/interfaces";
+
 export default class Pokemon {
+
     id?: number;
     name: string;
-    favorite: boolean = false
+    favorite: boolean = false;
     url: string;
-    types: any;
+    details: FormatedDetails;
 
-    constructor(name: string, url: string, types:any, favorite:boolean, id?: number){
+    constructor(name: string, url: string, details:FormatedDetails, favorite:boolean, id?: number){
         this.name = name;
         this.url = url;
-        this.types = types;
+        this.details = details;
+        this.favorite = favorite;
         this.id = id;
-        this.favorite = favorite
         this.createID();
     }
-    get displayCode(): string | undefined{
+    get displayCode(): string | undefined {
         let num = this.id;
         return num?.toString().padStart(3, "0"); 
     }
     get displayName(): string {
         return this.name;
     }
-    get spriteURL(): string {
-        return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.id}.png`;
+    get speciesType(): Array<string> {
+        return this.details.types;
     }
-    get speciesType(): string[] {
-        return this.types.map((item:any) => item.name);
+    get spriteURL(): string {
+        return this.details.sprites.main
+    }
+    get secondarySpriteURL(): string {
+        return this.details.sprites.secondary
+    }
+    get generationOneSprite(): string {
+        return ""
     }
     get isFavorite(): boolean | undefined {
       return this.favorite;
@@ -47,7 +57,6 @@ export default class Pokemon {
     }
     static fromJson(json: string): Pokemon {
         const parsed = JSON.parse(json);
-        return new Pokemon(parsed.name, parsed.url, parsed.types, parsed.favorite, parsed.id);
-      
+        return new Pokemon(parsed.name, parsed.url, parsed.details, parsed.favorite, parsed.id);    
     }
 }

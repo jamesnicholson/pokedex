@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import AppContext from '../../store/context'
 import {useSearch, useFilter} from '../../hooks'
 import Card from '../Card'
-import Pokemon from '../../types/models/pokemon'
+import Pokemon from '../../models/pokemon'
 
 interface PokeListProps {
 }

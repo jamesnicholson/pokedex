@@ -1,6 +1,6 @@
 import { useState, useRef, ReactNode, useEffect } from 'react'
 import styled from 'styled-components'
-import Pokemon from '../types/models/pokemon';
+import Pokemon from '../models/pokemon';
 
 const SearchBar = styled.input`
     width: 95%;
@@ -46,7 +46,7 @@ export const useFilter = (pokemon: Array<Pokemon>, searchFilters: Array<string>)
     useEffect(() => {
         if(searchFilters.length !== 0){
             var result = pokemon.filter(function(e) {
-                return e.types.some(function(a:any) {
+                return e.details.types.some(function(a:any) {
                     return searchFilters.indexOf(a.name) !== -1
                 })
             })

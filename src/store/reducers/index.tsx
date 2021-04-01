@@ -1,7 +1,7 @@
 import IState from '../../types/interfaces';
 import TActions from '../actions';
 import {ActionType} from '../../types/enums'
-import Pokemon from '../../types/models/pokemon';
+import Pokemon from '../../models/pokemon';
 
 function reducer(state: IState, action: TActions): IState{
     const {type, payload} = action

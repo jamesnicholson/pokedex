@@ -1,5 +1,5 @@
-import Pokemon from '../../types/models/pokemon';
-import {ISetLoading, ISetPokemon, IGetPokemon, IToggleFavorite, ISetFavorites, ISetSearchTerm, ISetSearchFilters } from '../../types/interfaces';
+import Pokemon from '../../models/pokemon';
+import {ISetLoading, ISetPokemon, IGetPokemon, IToggleFavorite, ISetFavorites, ISetSearchTerm, ISetSearchFilters } from './interfaces';
 import {ActionType} from '../../types/enums'
 
 export const setLoading = (payload:boolean): ISetLoading => ({

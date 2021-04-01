@@ -1,7 +1,7 @@
 import { FC, useContext } from 'react'
 import styled from 'styled-components'
 import AppContext from '../../store/context'
-import Pokemon from '../../types/models/pokemon';
+import Pokemon from '../../models/pokemon';
 
 interface IFavoriteListProps {
 } 

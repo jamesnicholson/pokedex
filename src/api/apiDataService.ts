@@ -1,7 +1,7 @@
-import Pokemon from '../types/models/pokemon'
+import Pokemon from '../models/pokemon'
 import APIEndpoints from '../api'
 export default class APIDataService {
-    static readonly MAX_POKEMON = 152;
+    static readonly MAX_POKEMON = 151;
     private pokemon: Pokemon[] = [];
 
     async loadPokemon(): Promise<Pokemon[]> {
@@ -19,6 +19,7 @@ export default class APIDataService {
     }
 
     private async getPokemonFromApi(): Promise<Pokemon[]> {
+        localStorage.clear();
         const api = new APIEndpoints();
         return api.getPokemon().then((pokemon: Pokemon[]) => pokemon);
     }
