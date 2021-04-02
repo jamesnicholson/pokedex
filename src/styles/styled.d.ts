@@ -5,10 +5,18 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     borderRadius: string;
-
     colors: {
       main: string;
       secondary: string;
+      heart:string;
+      heartGrey:string;
     };
+    pixels:{
+      heart: string;
+      heartTwo:string;
+      heartGrey: string;
+      heartGreyTwo: string;
+      heartGreyThree: string;
+    }
   }
 }

@@ -15,20 +15,37 @@ interface colorProps {
 }
 interface favProps {
     isfavorite?: boolean;
+    theme?:{
+        pixels:{
+            heart:string
+            heartTwo:string
+            heartGreyTwo:string
+            heartGreyThree:string
+        }
+    }
 }
   
 export const Name = styled.h3`
     padding: 10px;
-    color: ${props => props.theme.colors.main};
-    text-shadow: 0px 0px 1px ${props => props.theme.colors.secondary};
+    color: #fff;
 `;
 export const Code = styled.div`
-    padding: 8px;
+    display:table;
+    margin:8px 13px;
+    padding: 4px;
     background: #ffc107;
-    color: white;
-    text-shadow: 1px 1px 0px #000;
-    border-radius: 9px;
-    font-size: 12px;
+    color: #000;
+    font-weight: bold;
+    text-shadow: 0.05em 0.05em 0px #fffdfd;
+    box-shadow: 10px 0px 0px -4px #ffc107, 
+                -10px 0px 0px -4px #ffc107,
+                0px -2px 0px 0px #ffc107, 
+                0px 2px 0px 0px #ffc107, 
+                10px 0px 0px -4px #000,
+                4px 0px 0px 2px #e2aa03,
+                -4px 0px 0px 2px #e2aa03;
+    font-size: 13px;
+
 `;
 export const Sprite = styled.div`
     padding: 10px;
@@ -37,12 +54,14 @@ export const CardHeader = styled.div`
     width:100%;
     display:flex;
     justify-content: space-between;
+    background:#000;
 `;
 export const CardWrapper = styled.div`
     flex: 1 1 200px;
     background: khaki;
     text-align: center;
     margin:5px;
+    box-shadow: inset 0px 0px 0px 5px #000;
     background: ${(props: colorProps) => {
         if(props.colors.length === 1){
             return props.colors 
@@ -51,13 +70,21 @@ export const CardWrapper = styled.div`
         }
     }};
 `;
-export const Favorite = styled.div`
-    padding: 8px;
-    background: ${(props: favProps) => props.isfavorite ? "#8bc34a" : "rebeccapurple"};
-    border-radius: 9px;
-    font-size: 1em;
-    color: white;
-    font-weight: bold;
+const CornerBlock= styled.div`
+
+`
+const HeartWrapper = styled.div`
+    width: 26px;
+    height:26px;
+`;
+ const Heart = styled.div`
+    width: 2px;
+    height: 2px;
+    background: none;
+    position: relative;
+    right: 9px;
+    top: 6px;
+    box-shadow: ${(props: favProps) => props.isfavorite ? props.theme?.pixels.heartTwo : props.theme?.pixels.heartGreyTwo};
 `;
 const Card: FC<ICardProps> = ({pokemon}) => {
     const {spriteURL, displayName, displayCode, isFavorite, speciesType} = pokemon
@@ -69,14 +96,17 @@ const Card: FC<ICardProps> = ({pokemon}) => {
         api.updateFavoriteCache(pokemon);
     }
     return  <CardWrapper colors={colors}>
+                <CornerBlock />
                 <CardHeader>
                     <Code>{displayCode}</Code>
-                    <Favorite
-                        isfavorite={isFavorite}
-                        onClick={()=>{handler()}}> {"\u2606"}</Favorite>
+                    <Name>{displayName}</Name>
+                    <HeartWrapper
+                        onClick={()=>{handler()}}><Heart isfavorite={isFavorite}>&nbsp;</Heart></HeartWrapper>
                 </CardHeader>
-                <Name>{displayName}</Name>
                 <Sprite><img src={spriteURL} alt={displayName} /></Sprite>
             </CardWrapper>
 }
 export default Card
+
+
+

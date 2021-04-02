@@ -39,7 +39,7 @@ const FavoriteList: FC<IFavoriteListProps> = () => {
                 {favorites.map((_pokemon: Pokemon, index: number) => {
                     return  <NameWrapper key={index}>
                                 <Name>{_pokemon.displayName}</Name>
-                                <img src={_pokemon.secondarySpriteURL} />
+                                <img src={_pokemon.secondarySpriteURL} alt={_pokemon.displayName} />
                             </NameWrapper>
                 })}
             </FavoriteListWrapper>
