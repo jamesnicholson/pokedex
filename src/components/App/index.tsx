@@ -1,4 +1,4 @@
-import {useEffect, useContext} from 'react';
+import {useEffect, useContext, useState} from 'react';
 import styled from 'styled-components';
 import APIService from '../../api/apiDataService'
 import AppContext from '../../store/context'
@@ -9,7 +9,9 @@ import SpeciesTypeFilters from '../SpeciesTypeFilters'
 import PokeList from '../PokeList'
 import SearchBar from '../SearchBar'
 import LoadingIndicator from '../LoadingIndicator'
-
+interface styleShowMenuProps {
+  showMenu: boolean;
+}
 export const Title = styled.h1`
   padding: 10px;
   color: ${props => props.theme.colors.main};
@@ -39,7 +41,8 @@ export const ListWrapper = styled.div`
   flex-direction: column;
   flex: 0 0 230px;
   @media (max-width: 900px) {
-    display:none;
+    display: ${(props: styleShowMenuProps) => props.showMenu  ? "show" : "none"};
+    flex:auto;
   }
 `;
 export const HeaderWrapper = styled.div`
@@ -53,16 +56,15 @@ export const HeaderWrapper = styled.div`
 export const FilterSearchWrapper = styled.div`
   width:100%;
   color: ${props => props.theme.colors.main};
-  @media (max-width: 900px) {
-  }
 `;
 export const MenuToggleButton = styled.div`
   width:40px;
   height:40px;
   display:none;
-  background:red;
+  background:black;
   padding: 6px;
-  color: ${props => props.theme.colors.main};
+  font-size:3em;
+  color: ${props => props.theme.colors.secondary};
   @media (max-width: 900px) {
     display:block;
   }
@@ -70,7 +72,7 @@ export const MenuToggleButton = styled.div`
 
 
 const App = (): JSX.Element => {
-
+  const [showMenu, setShowMenu]  = useState(false)
   const {state, dispatch} = useContext(AppContext);
   const {loading} = state
 
@@ -82,6 +84,9 @@ const App = (): JSX.Element => {
     }).finally(() => dispatch(setLoading(false)));
   },[dispatch]);
   
+  const handler = () => {
+    setShowMenu(!showMenu)
+  }
   if(loading){
     return <LoadingIndicator />
   }
@@ -89,7 +94,7 @@ const App = (): JSX.Element => {
             <HeaderWrapper>
               <TitleWrapper>
                  <Title>Hello Pokédex</Title>
-                 <MenuToggleButton>#</MenuToggleButton>
+                 <MenuToggleButton onClick={handler} >#</MenuToggleButton>
               </TitleWrapper>
               <FilterSearchWrapper>
                 <SearchBar />
@@ -97,10 +102,10 @@ const App = (): JSX.Element => {
               </FilterSearchWrapper>
             </HeaderWrapper>
             <AppWrapper>
-              <ListWrapper>
+              <ListWrapper showMenu={showMenu}>
                 <Tabs />
               </ListWrapper>
-              <PokeList />
+              <PokeList showMenu={showMenu} />
             </AppWrapper>
           </> 
 }

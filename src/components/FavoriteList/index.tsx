@@ -16,6 +16,7 @@ export const FavoriteListWrapper = styled.div`
     margin: 5px;
     width: auto;
     min-width: 130px;
+
 `;
 export const NameWrapper = styled.div`
     display:flex;
@@ -28,6 +29,9 @@ export const NameWrapper = styled.div`
     padding: 3px;
     vertical-align: middle;
     box-shadow: 0px 0px 1px 1px #050708;
+    @media (max-width: 900px) {
+        width:98%;
+    }
 `;
 const FavoriteList: FC<IFavoriteListProps> = () => {
     const {state} = useContext(AppContext);

@@ -6,6 +6,7 @@ import Card from '../Card'
 import Pokemon from '../../models/pokemon'
 
 interface PokeListProps {
+    showMenu:boolean;
 }
 
 const PokeListWrapper = styled.div`
@@ -15,7 +16,8 @@ const PokeListWrapper = styled.div`
     color: ${props => props.theme.colors.main};
 `;
 
-const PokeList: FC<PokeListProps> = () => {
+const PokeList: FC<PokeListProps> = ({showMenu}) => {
+ 
     const [pokemonList, setPokemonList] = useState<Array<Pokemon>>([])
     const {state} = useContext(AppContext);
     const {searchTerm, pokemon, searchFilters} =  state;
@@ -29,6 +31,7 @@ const PokeList: FC<PokeListProps> = () => {
         setPokemonList(filters) 
     }, [filters])
 
+    if(showMenu) return null;
     return  <PokeListWrapper>
                {pokemonList.map((pokemon:Pokemon, index:number) => <Card key={index} pokemon={pokemon}/>)}
             </PokeListWrapper>

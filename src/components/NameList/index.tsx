@@ -1,6 +1,5 @@
 import { FC, useContext } from 'react'
 import styled from 'styled-components'
-import { isConstructorDeclaration } from 'typescript';
 import AppContext from '../../store/context'
 import Pokemon from '../../models/pokemon';
 interface INameListProps {
@@ -28,6 +27,9 @@ export const NameWrapper = styled.div`
     padding: 3px;
     vertical-align: middle;
     box-shadow: 0px 0px 1px 1px #050708;
+    @media (max-width: 900px) {
+        width:98%;
+    }
 `;
 const NameList: FC<INameListProps> = () => {
     const {state} = useContext(AppContext);
@@ -37,7 +39,7 @@ const NameList: FC<INameListProps> = () => {
                 {pokemon.map((_pokemon: Pokemon, index: number) => {
                     return  <NameWrapper key={index}>
                                 <Name>{_pokemon.displayName}</Name>
-                                <img src={_pokemon.secondarySpriteURL} />
+                                <img src={_pokemon.secondarySpriteURL} alt={_pokemon.displayName} />
                             </NameWrapper>
                 })}
             </NameListWrapper>
