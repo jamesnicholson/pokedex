@@ -8,15 +8,10 @@ declare module 'styled-components' {
     colors: {
       main: string;
       secondary: string;
-      heart:string;
-      heartGrey:string;
     };
     pixels:{
-      heart: string;
-      heartTwo:string;
+      heart:string;
       heartGrey: string;
-      heartGreyTwo: string;
-      heartGreyThree: string;
     }
   }
 }

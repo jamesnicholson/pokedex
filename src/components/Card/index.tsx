@@ -18,9 +18,7 @@ interface favProps {
     theme?:{
         pixels:{
             heart:string
-            heartTwo:string
-            heartGreyTwo:string
-            heartGreyThree:string
+            heartGrey:string
         }
     }
 }
@@ -28,6 +26,7 @@ interface favProps {
 export const Name = styled.h3`
     padding: 10px;
     color: #fff;
+    font-size:15px;
 `;
 export const Code = styled.div`
     display:table;
@@ -84,7 +83,7 @@ const HeartWrapper = styled.div`
     position: relative;
     right: 9px;
     top: 6px;
-    box-shadow: ${(props: favProps) => props.isfavorite ? props.theme?.pixels.heartTwo : props.theme?.pixels.heartGreyTwo};
+    box-shadow: ${(props: favProps) => props.isfavorite ? props.theme?.pixels.heart : props.theme?.pixels.heartGrey};
 `;
 const Card: FC<ICardProps> = ({pokemon}) => {
     const {spriteURL, displayName, displayCode, isFavorite, speciesType} = pokemon
