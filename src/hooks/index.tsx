@@ -6,6 +6,8 @@ const SearchBar = styled.input`
     width: 95%;
     font-size: 1em;
     padding: 11px;
+    border: 5px solid black;
+    font-family: 'Press Start 2P', cursive;
 `
 export const pokemonType: { type: string, color: string }[] = [
     { "type": "normal", "color": "#A8A878" },

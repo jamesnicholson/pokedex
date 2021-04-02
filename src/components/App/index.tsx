@@ -21,9 +21,18 @@ export const AppWrapper = styled.div`
   color: ${props => props.theme.colors.main};
 `;
 export const TitleWrapper = styled.div`
-  padding: 10px 0;
-  width: 237px;
-  display: table;
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  @media (max-width: 900px) {
+    max-width: 100%;
+    justify-content: space-between;
+    align-content: normal;
+    flex-direction: revert;
+  }
 `;
 export const ListWrapper = styled.div`
   display: flex;
@@ -41,6 +50,24 @@ export const HeaderWrapper = styled.div`
     flex-direction: column;
   }
 `;
+export const FilterSearchWrapper = styled.div`
+  width:100%;
+  color: ${props => props.theme.colors.main};
+  @media (max-width: 900px) {
+  }
+`;
+export const MenuToggleButton = styled.div`
+  width:40px;
+  height:40px;
+  display:none;
+  background:red;
+  padding: 6px;
+  color: ${props => props.theme.colors.main};
+  @media (max-width: 900px) {
+    display:block;
+  }
+`;
+
 
 const App = (): JSX.Element => {
 
@@ -62,11 +89,12 @@ const App = (): JSX.Element => {
             <HeaderWrapper>
               <TitleWrapper>
                  <Title>Hello Pokédex</Title>
+                 <MenuToggleButton>#</MenuToggleButton>
               </TitleWrapper>
-              <div>
+              <FilterSearchWrapper>
                 <SearchBar />
                 <SpeciesTypeFilters />
-              </div>
+              </FilterSearchWrapper>
             </HeaderWrapper>
             <AppWrapper>
               <ListWrapper>
