@@ -1,5 +1,4 @@
-<img style="display: block; margin: auto;"
-src="https://github.com/jamesnicholson/pokedex/blob/master/public/fqvkzmph.png?raw=true">
+![alt text](https://github.com/jamesnicholson/pokedex/blob/master/public/fqvkzmph.png?raw=true)
 # An Pokedex App
 A small pokedex of the first 152 pokemon.
  `yarn start` to get it going
@@ -20,5 +19,5 @@ Demo URL: http://161.35.115.185:3300/
 - Update styles
 - Keyboard Accessability
 
-<img style="display: block; margin: auto;"
-src="https://github.com/jamesnicholson/pokedex/blob/master/public/ageupmca.png?raw=true">
+
+![alt text](https://github.com/jamesnicholson/pokedex/blob/master/public/ageupmca.png?raw=true)
