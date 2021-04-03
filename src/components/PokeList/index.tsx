@@ -5,7 +5,7 @@ import {useSearch, useFilter} from '../../hooks'
 import Card from '../Card'
 import Pokemon from '../../models/pokemon'
 
-interface PokeListProps {
+interface IPokeListProps {
     showMenu:boolean;
 }
 
@@ -15,8 +15,7 @@ const PokeListWrapper = styled.div`
     width:100%;
     color: ${props => props.theme.colors.main};
 `;
-
-const PokeList: FC<PokeListProps> = ({showMenu}) => {
+const PokeList: FC<IPokeListProps> = ({showMenu}) => {
  
     const [pokemonList, setPokemonList] = useState<Array<Pokemon>>([])
     const {state} = useContext(AppContext);

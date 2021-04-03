@@ -9,7 +9,7 @@ import SpeciesTypeFilters from '../SpeciesTypeFilters'
 import PokeList from '../PokeList'
 import SearchBar from '../SearchBar'
 import LoadingIndicator from '../LoadingIndicator'
-interface styleShowMenuProps {
+interface IStyleShowMenuProps {
   showMenu: boolean;
 }
 export const Title = styled.h1`
@@ -41,7 +41,7 @@ export const ListWrapper = styled.div`
   flex-direction: column;
   flex: 0 0 230px;
   @media (max-width: 900px) {
-    display: ${(props: styleShowMenuProps) => props.showMenu  ? "show" : "none"};
+    display: ${(props: IStyleShowMenuProps) => props.showMenu  ? "show" : "none"};
     flex:auto;
   }
 `;

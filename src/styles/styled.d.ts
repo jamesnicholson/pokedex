@@ -1,7 +1,5 @@
 // import original module declarations
 import 'styled-components';
-
-// and extend them!
 declare module 'styled-components' {
   export interface DefaultTheme {
     borderRadius: string;
@@ -12,6 +10,7 @@ declare module 'styled-components' {
     pixels:{
       heart:string;
       heartGrey: string;
+      pokeball: string;
     }
   }
 }

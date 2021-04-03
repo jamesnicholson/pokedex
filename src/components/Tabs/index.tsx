@@ -5,10 +5,10 @@ import NameList from '../NameList'
 import AppContext from '../../store/context'
 interface ITabsProps {
 }
-interface styleTabContainerProps {
+interface IStyleTabContainerProps {
   active: boolean;
 }
-interface styleTabButtonsProps {
+interface IStyleTabButtonsProps {
   active: boolean;
   id:string;
 }
@@ -25,19 +25,19 @@ const TabWrapper = styled.div`
 `;
 const TabNameWrapper = styled.div`
   width:100%;
-  display: ${(props: styleTabContainerProps) => props.active  ? "show" : "none"};
+  display: ${(props: IStyleTabContainerProps) => props.active  ? "show" : "none"};
 `;
 const TabFavoriteWrapper = styled.div`
   width:100%;
-  display: ${(props: styleTabContainerProps) => props.active  ? "show" : "none"};
+  display: ${(props: IStyleTabContainerProps) => props.active  ? "show" : "none"};
 `;
 const TabButtonWrapper = styled.div`
   width:100%;
   display: flex;
 `;
 const TabButton = styled.div`
-  background: ${(props: styleTabButtonsProps) => props.active  ? "#000" : "#fff"};
-  color: ${(props: styleTabButtonsProps) => props.active  ? "#fff" : "#000"};
+  background: ${(props: IStyleTabButtonsProps) => props.active  ? "#000" : "#fff"};
+  color: ${(props: IStyleTabButtonsProps) => props.active  ? "#fff" : "#000"};
   font-size: 0.8em;
   width: 100%;
   text-align: center;

@@ -10,10 +10,10 @@ interface ICardProps {
     key:Number
     pokemon: Pokemon
 }
-interface colorProps {
+interface IColorProps {
     colors: Array<string>;
 }
-interface favProps {
+interface IFavoriteProps {
     isfavorite?: boolean;
     theme?:{
         pixels:{
@@ -61,7 +61,7 @@ export const CardWrapper = styled.div`
     text-align: center;
     margin:5px;
     box-shadow: inset 0px 0px 0px 5px #000;
-    background: ${(props: colorProps) => {
+    background: ${(props: IColorProps) => {
         if(props.colors.length === 1){
             return props.colors 
         } else if(props.colors.length > 1) {
@@ -83,7 +83,7 @@ const HeartWrapper = styled.div`
     position: relative;
     right: 9px;
     top: 6px;
-    box-shadow: ${(props: favProps) => props.isfavorite ? props.theme?.pixels.heart : props.theme?.pixels.heartGrey};
+    box-shadow: ${(props: IFavoriteProps) => props.isfavorite ? props.theme?.pixels.heart : props.theme?.pixels.heartGrey};
 `;
 const Card: FC<ICardProps> = ({pokemon}) => {
     const {spriteURL, displayName, displayCode, isFavorite, speciesType} = pokemon
