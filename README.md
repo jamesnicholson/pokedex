@@ -1,4 +1,5 @@
 # An Pokedex App
+![alt text](https://github.com/jamesnicholson/pokedex/blob/master/public/favicon.png?raw=true)
 A small pokedex of the first 152 pokemon.
  `yarn start` to get it going
 
