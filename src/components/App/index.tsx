@@ -9,20 +9,22 @@ import SpeciesTypeFilters from '../SpeciesTypeFilters'
 import PokeList from '../PokeList'
 import SearchBar from '../SearchBar'
 import LoadingIndicator from '../LoadingIndicator'
+import MobileFavorites from '../MobileFavorites'
+
 interface IStyleShowMenuProps {
   showMenu: boolean;
 }
-export const Title = styled.h1`
+const Title = styled.h1`
   padding: 10px;
   color: ${props => props.theme.colors.main};
   text-shadow: 0px 0px 2px ${props => props.theme.colors.secondary};
 `;
-export const AppWrapper = styled.div`
+const AppWrapper = styled.div`
   display: flex;
   padding: 0 10px;
   color: ${props => props.theme.colors.main};
 `;
-export const TitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   width: 100%;
   max-width: 280px;
   display: flex;
@@ -36,16 +38,16 @@ export const TitleWrapper = styled.div`
     flex-direction: revert;
   }
 `;
-export const ListWrapper = styled.div`
+const ListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 0 0 230px;
   @media (max-width: 900px) {
     display: ${(props: IStyleShowMenuProps) => props.showMenu  ? "show" : "none"};
-    flex:auto;
+    flex: auto;
   }
 `;
-export const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.div`
   display: flex;
   padding: 6px;
   color: ${props => props.theme.colors.main};
@@ -53,11 +55,11 @@ export const HeaderWrapper = styled.div`
     flex-direction: column;
   }
 `;
-export const FilterSearchWrapper = styled.div`
+const FilterSearchWrapper = styled.div`
   width:100%;
   color: ${props => props.theme.colors.main};
 `;
-export const MenuToggleButton = styled.div`
+const MenuToggleButton = styled.div`
   width:40px;
   height:40px;
   display:none;
@@ -69,7 +71,15 @@ export const MenuToggleButton = styled.div`
     display:block;
   }
 `;
-
+ const MobileFavoritesWrapper = styled.div`
+  width:80px;
+  height:80px;
+  padding: 10px;
+  display:none;
+  @media (max-width: 900px) {
+    display:block;
+  }
+`;
 
 const App = (): JSX.Element => {
   const [showMenu, setShowMenu]  = useState(false)
@@ -93,8 +103,10 @@ const App = (): JSX.Element => {
   return  <>
             <HeaderWrapper>
               <TitleWrapper>
-                 <Title>Hello Pokédex</Title>
-                 <MenuToggleButton onClick={handler} >#</MenuToggleButton>
+                  <Title>Hello Pokédex</Title>
+                  <MobileFavoritesWrapper>
+                    <MobileFavorites />
+                  </MobileFavoritesWrapper>
               </TitleWrapper>
               <FilterSearchWrapper>
                 <SearchBar />
