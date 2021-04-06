@@ -48,6 +48,7 @@ export const Code = styled.div`
 `;
 export const Sprite = styled.div`
     padding: 10px;
+    min-height: 96px;
 `;
 export const CardHeader = styled.div`
     width:100%;

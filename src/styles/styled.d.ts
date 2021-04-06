@@ -1,4 +1,3 @@
-// import original module declarations
 import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
@@ -11,6 +10,7 @@ declare module 'styled-components' {
       heart:string;
       heartGrey: string;
       pokeball: string;
-    }
+    },
+    animate:any;
   }
 }

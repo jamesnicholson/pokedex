@@ -11,6 +11,11 @@ interface IPixelProps {
         }
     }
 }
+interface IAnimateProps {
+    theme?:{
+        animate:any
+    }
+}
 const LoadingIndicatorWrapper = styled.div`
     background: black;
     text-align: center;
@@ -27,11 +32,10 @@ const PokeBall = styled.div`
     box-shadow:${(pixelProps: IPixelProps) => pixelProps.theme?.pixels.pokeball};
     width:5px;
     height:5px;
-    
+    transform-origin: 50% 50%;
+    animation: ${(animateProps: IAnimateProps) => {console.log(animateProps); return animateProps.theme?.animate}} 2.72s ease infinite;
 `;
 const LoadingIndicator: FC<ILoadingIndicatorProps> = () => {
-    //const {state} = useContext(AppContext);
-    //const {pokemon} = state;
     return  <LoadingIndicatorWrapper>
                 <PokeBall />
             </LoadingIndicatorWrapper>

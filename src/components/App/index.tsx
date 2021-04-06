@@ -60,18 +60,6 @@ const FilterSearchWrapper = styled.div`
   width:100%;
   color: ${props => props.theme.colors.main};
 `;
-const MenuToggleButton = styled.div`
-  width:40px;
-  height:40px;
-  display:none;
-  background:black;
-  padding: 6px;
-  font-size:3em;
-  color: ${props => props.theme.colors.secondary};
-  @media (max-width: 900px) {
-    display:block;
-  }
-`;
  const MobileFavoritesWrapper = styled.div`
   width:80px;
   height:80px;
@@ -106,9 +94,6 @@ const App = (): JSX.Element => {
     }).finally(() => dispatch(setLoading(false)));
   },[dispatch]);
   
-  const handler = () => {
-    setShowMenu(!showMenu)
-  }
   return  <>
             { loading || fontLoaded === false ? <LoadingIndicator /> : null}
             <HeaderWrapper>
@@ -124,10 +109,10 @@ const App = (): JSX.Element => {
               </FilterSearchWrapper>
             </HeaderWrapper>
             <AppWrapper>
-              <ListWrapper showMenu={showMenu}>
+              <ListWrapper showMenu={false}>
                 <Tabs />
               </ListWrapper>
-              <PokeList showMenu={showMenu} />
+              <PokeList showMenu={false} />
             </AppWrapper>
           </> 
 }
