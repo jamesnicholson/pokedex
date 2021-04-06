@@ -8,7 +8,8 @@ export const initialState: IState =  {
     favorites:[],
     searchTerm: "",
     searchFilters:[],
-    loading: true
+    loading: true,
+    fontLoaded: false
 
 }
 interface IContext {

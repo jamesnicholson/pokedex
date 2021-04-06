@@ -18,6 +18,8 @@ function reducer(state: IState, action: TActions): IState{
             }  
         case ActionType.SET_LOADING:
             return {...state, loading: false}
+        case ActionType.SET_FONT_LOADED:
+                return {...state, fontLoaded: true}
         case ActionType.SET_FAVORITES:
             return {...state, favorites: payload}
         case ActionType.TOGGLE_FAVORITE:

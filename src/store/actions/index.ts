@@ -1,5 +1,5 @@
 import Pokemon from '../../models/pokemon';
-import {ISetLoading, ISetPokemon, IGetPokemon, IToggleFavorite, ISetFavorites, ISetSearchTerm, ISetSearchFilters } from './interfaces';
+import {ISetLoading, ISetPokemon, IGetPokemon, IToggleFavorite, ISetFavorites, ISetSearchTerm, ISetSearchFilters, ISetFontLoaded } from './interfaces';
 import {ActionType} from './enums'
 
 export const setLoading = (payload:boolean): ISetLoading => ({
@@ -30,5 +30,9 @@ export const setSearchFilters = (payload: string): ISetSearchFilters => ({
     type: ActionType.SET_SEARCH_FILTERS,
     payload
 });
-type TAction = ISetLoading | ISetPokemon | IGetPokemon | IToggleFavorite | ISetFavorites | ISetSearchTerm | ISetSearchFilters;
+export const setFontLoaded = (payload: boolean): ISetFontLoaded => ({
+    type: ActionType.SET_FONT_LOADED,
+    payload
+});
+type TAction = ISetLoading | ISetPokemon | IGetPokemon | IToggleFavorite | ISetFavorites | ISetSearchTerm | ISetFontLoaded | ISetSearchFilters;
 export default TAction

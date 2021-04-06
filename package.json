@@ -16,7 +16,13 @@
     "react-scripts": "4.0.3",
     "styled-components": "^5.2.1",
     "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "webfontloader": "^1.6.28",
+    "workbox-core": "^6.1.2",
+    "workbox-expiration": "^6.1.2",
+    "workbox-precaching": "^6.1.2",
+    "workbox-routing": "^6.1.2",
+    "workbox-strategies": "^6.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/webfontloader": "^1.6.32"
   }
 }

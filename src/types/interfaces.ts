@@ -4,4 +4,5 @@ export default interface IState {
   searchTerm: any;
   searchFilters: any;
   loading: boolean;
+  fontLoaded: boolean;
 }

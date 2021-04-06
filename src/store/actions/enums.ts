@@ -5,6 +5,7 @@ export enum ActionType {
     SET_FAVORITES,
     SET_SEARCH_TERM,
     SET_SEARCH_FILTERS,
+    SET_FONT_LOADED,
     SET_LOADING,
     CLEAR_LIST,
   }

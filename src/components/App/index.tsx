@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import APIService from '../../api/apiDataService'
 import AppContext from '../../store/context'
 import Pokemon from '../../models/pokemon'
-import {setPokemon, setLoading, setFavorties} from '../../store/actions'
+import {setPokemon, setLoading, setFavorties, setFontLoaded} from '../../store/actions'
 import Tabs from '../Tabs'
 import SpeciesTypeFilters from '../SpeciesTypeFilters'
 import PokeList from '../PokeList'
 import SearchBar from '../SearchBar'
 import LoadingIndicator from '../LoadingIndicator'
 import MobileFavorites from '../MobileFavorites'
+import WebFont from 'webfontloader';
 
 interface IStyleShowMenuProps {
   showMenu: boolean;
@@ -84,7 +85,18 @@ const MenuToggleButton = styled.div`
 const App = (): JSX.Element => {
   const [showMenu, setShowMenu]  = useState(false)
   const {state, dispatch} = useContext(AppContext);
-  const {loading} = state
+  const {loading, fontLoaded} = state
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Press Start 2P', 'sans-serif']
+      },
+      fontactive: function() {
+        dispatch(setFontLoaded(true))
+      }
+    });
+  }, [WebFont])
 
   useEffect(() => {
     const api = new APIService();
@@ -97,10 +109,8 @@ const App = (): JSX.Element => {
   const handler = () => {
     setShowMenu(!showMenu)
   }
-  if(loading){
-    return <LoadingIndicator />
-  }
   return  <>
+            { loading || fontLoaded === false ? <LoadingIndicator /> : null}
             <HeaderWrapper>
               <TitleWrapper>
                   <Title>Hello Pokédex</Title>

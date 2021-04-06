@@ -32,3 +32,7 @@ export interface IAction {
     type: ActionType.SET_SEARCH_FILTERS;
     payload: Array<string> | string;
   }
+  export interface ISetFontLoaded{
+    type: ActionType.SET_FONT_LOADED;
+    payload: boolean;
+  }

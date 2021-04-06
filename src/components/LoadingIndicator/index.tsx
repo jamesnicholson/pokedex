@@ -13,15 +13,16 @@ interface IPixelProps {
 }
 const Title = styled.h4`
     padding: 10px;
-    color: ${props => props.theme.colors.main};
-    text-shadow: 0px 0px 1px ${props => props.theme.colors.secondary};
+    color: ${props => props.theme.colors.secondary};
 `;
 const LoadingIndicatorWrapper = styled.div`
-    background: #black;
+    background: black;
     text-align: center;
-    margin: 5px;
-    width: auto;
-    min-width: 130px;
+    color: white;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 9;
 `;
 const PokeBall = styled.div`
     display: inline-block;
