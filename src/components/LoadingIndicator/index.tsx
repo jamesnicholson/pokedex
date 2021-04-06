@@ -28,6 +28,7 @@ const LoadingIndicatorWrapper = styled.div`
 const PokeBall = styled.div`
     display: inline-block;
     position: relative;
+    top: 200px;
     right: 30px;
     box-shadow:${(pixelProps: IPixelProps) => pixelProps.theme?.pixels.pokeball};
     width:5px;
