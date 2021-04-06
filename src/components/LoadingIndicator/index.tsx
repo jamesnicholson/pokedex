@@ -11,10 +11,6 @@ interface IPixelProps {
         }
     }
 }
-const Title = styled.h4`
-    padding: 10px;
-    color: ${props => props.theme.colors.secondary};
-`;
 const LoadingIndicatorWrapper = styled.div`
     background: black;
     text-align: center;
@@ -37,7 +33,6 @@ const LoadingIndicator: FC<ILoadingIndicatorProps> = () => {
     //const {state} = useContext(AppContext);
     //const {pokemon} = state;
     return  <LoadingIndicatorWrapper>
-                <Title>Loading</Title>
                 <PokeBall />
             </LoadingIndicatorWrapper>
 }
