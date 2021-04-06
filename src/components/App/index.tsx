@@ -17,6 +17,7 @@ interface IStyleShowMenuProps {
 }
 const Title = styled.h1`
   padding: 10px;
+  max-width: 300px;
   color: ${props => props.theme.colors.main};
   text-shadow: 0px 0px 2px ${props => props.theme.colors.secondary};
 `;
@@ -27,7 +28,7 @@ const AppWrapper = styled.div`
 `;
 const TitleWrapper = styled.div`
   width: 100%;
-  max-width: 280px;
+  max-width: 350px;
   display: flex;
   justify-content: center;
   align-content: center;
