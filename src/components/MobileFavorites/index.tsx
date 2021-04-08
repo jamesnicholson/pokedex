@@ -1,8 +1,6 @@
-import {FC, useContext, useState} from 'react';
+import {FC, useContext } from 'react';
 import styled from 'styled-components';
 import AppContext from '../../store/context'
-import Pokemon from '../../models/pokemon'
-import { getLeadingCommentRanges } from 'typescript';
 
 interface IMobileFavoritesProps {
 
@@ -42,7 +40,7 @@ const CountWrapper = styled.div`
   top: 0px;
 `
 const MobileFavorites: FC<IMobileFavoritesProps> = () => {
-  const {state, dispatch} = useContext(AppContext);
+  const {state} = useContext(AppContext);
   const {favorites} = state;
   return  <MobileFavoritesWrapper>
                <Pokeball />

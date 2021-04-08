@@ -23,6 +23,7 @@ export const Text = styled.div`
     border: ${(props: IFavoriteProps) => props.searchFilter.includes(props.type) ? "2px solid black" : "none" };
     padding: 7px;
     display: inline-block;
+    cursor: pointer;
     margin:2px;
 `;
 

@@ -42,6 +42,7 @@ const TabButton = styled.div`
   width: 100%;
   text-align: center;
   padding:25px 15px;
+  cursor: pointer;
 `;
 
 const Tabs: FC<ITabsProps> = () => {

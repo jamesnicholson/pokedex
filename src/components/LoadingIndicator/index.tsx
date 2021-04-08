@@ -34,7 +34,7 @@ const PokeBall = styled.div`
     width:5px;
     height:5px;
     transform-origin: 50% 50%;
-    animation: ${(animateProps: IAnimateProps) => {console.log(animateProps); return animateProps.theme?.animate}} 2.72s ease infinite;
+    animation: ${(animateProps: IAnimateProps) => {return animateProps.theme?.animate}} 2.72s ease infinite;
 `;
 const LoadingIndicator: FC<ILoadingIndicatorProps> = () => {
     return  <LoadingIndicatorWrapper>
